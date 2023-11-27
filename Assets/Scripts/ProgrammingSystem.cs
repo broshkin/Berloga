@@ -8,10 +8,19 @@ public class ProgrammingSystem : MonoBehaviour
     public bool isTriggerActive = false;
     public bool isActionActive = false;
     public bool isParameterActive = false;
+
+    public bool isTriggerFull = false;
+    public bool isActionFull = false;
+    public bool isParameterFull = false;
+
     public GameObject TriggersView;
     public GameObject ActionsView;
     public GameObject ParametersView;
-    // Start is called before the first frame update
+
+    public GameObject TriggerField;
+    public GameObject ActionField;
+    public GameObject ParameterField;
+
     public  void OnTriggerClicked()
     {
         isTriggerActive = true;
@@ -36,7 +45,7 @@ public class ProgrammingSystem : MonoBehaviour
     public void SetViews()
     {
         TriggersView.SetActive(isTriggerActive);
-        ActionsView.SetActive(isActionActive);
-        ParametersView.SetActive(isParameterActive);
+        //ActionsView.SetActive(isActionActive);
+        //ParametersView.SetActive(isParameterActive);
     }    
 }

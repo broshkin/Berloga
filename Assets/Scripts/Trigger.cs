@@ -10,6 +10,7 @@ public class Trigger : MonoBehaviour
     public string name;
     public Sprite icon;
     public int id;
+    public bool isActive = false;
 
     public void Start()
     {
@@ -19,7 +20,15 @@ public class Trigger : MonoBehaviour
         }
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = name;
         gameObject.GetComponent<Image>().sprite = icon;
-        //gameObject.transform.position = new Vector3(-370f, -176.25f, 0);
     }
-
+    public void OnClickedTrigger()
+    {
+        isActive = true;
+        var prgSys = gameObject.GetComponentInParent<ProgrammingSystem>();
+        var triggerField = prgSys.TriggerField;
+        var prefabTrigger = Instantiate(gameObject, triggerField.transform);
+        prefabTrigger.GetComponent<Image>().color = Color.white;
+        prefabTrigger.transform.localScale = Vector3.one / 2;
+        prgSys.isTriggerFull = true;
+    }    
 }
