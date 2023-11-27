@@ -6,7 +6,9 @@ using UnityEngine;
 public class ProgrammingSystem : MonoBehaviour
 {
     public bool isTriggerActive = false;
+    public GameObject ActiveTrigger = null;
     public bool isActionActive = false;
+    public GameObject ActiveAction = null;
     public bool isParameterActive = false;
 
     public bool isTriggerFull = false;
@@ -14,12 +16,16 @@ public class ProgrammingSystem : MonoBehaviour
     public bool isParameterFull = false;
 
     public GameObject TriggersView;
+
     public GameObject ActionsView;
+
     public GameObject ParametersView;
 
     public GameObject TriggerField;
     public GameObject ActionField;
     public GameObject ParameterField;
+
+    public GameObject interactObject;
 
     public  void OnTriggerClicked()
     {
@@ -45,7 +51,19 @@ public class ProgrammingSystem : MonoBehaviour
     public void SetViews()
     {
         TriggersView.SetActive(isTriggerActive);
-        //ActionsView.SetActive(isActionActive);
+        ActionsView.SetActive(isActionActive);
         //ParametersView.SetActive(isParameterActive);
-    }    
+    }
+    public void ApplyChanges()
+    {
+        if (ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+        {
+            at.acivateTrigger();
+        }
+        if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa))
+        {
+            oa.activateAction();
+        }
+        gameObject.SetActive(false);
+    }
 }
