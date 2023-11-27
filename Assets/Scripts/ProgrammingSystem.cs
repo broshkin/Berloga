@@ -27,6 +27,10 @@ public class ProgrammingSystem : MonoBehaviour
 
     public GameObject interactObject;
 
+    public void Start()
+    {
+        TriggersView.SetActive(false); ActionsView.SetActive(false);
+    }
     public  void OnTriggerClicked()
     {
         isTriggerActive = true;

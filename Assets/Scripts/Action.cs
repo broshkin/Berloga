@@ -28,7 +28,7 @@ public class Action : MonoBehaviour
             var prefabAction = Instantiate(gameObject, actionField.transform);
             prefabAction.GetComponent<Image>().color = Color.white;
             prefabAction.transform.localScale = Vector3.one / 2 * 1.5f;
-            prefabAction.transform.localPosition = new Vector3(30, 10);
+            prefabAction.transform.localPosition = new Vector3(0, 10);
             prefabAction.GetComponent<Button>().enabled = false;
             prgSys.isActionFull = true;
             prgSys.ActiveAction = gameObject;
