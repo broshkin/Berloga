@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PasswordTrigger : MonoBehaviour
+public class PasswordTrigger : Trigger
 {
-    // Start is called before the first frame update
-    void Start()
+    public void activateTrigger()
     {
-        
+        var prgSys = GetComponentInParent<ProgrammingSystem>();
+        var parameter = prgSys.ActiveParameter;
+        prgSys.interactObject.GetComponent<DoorActions>().ActiveTrigger = gameObject;
+        prgSys.interactObject.GetComponent<DoorActions>().ActiveParameter = parameter;
     }
-
-    // Update is called once per frame
-    void Update()
+    public override void OnClickedTrigger()
     {
-        
+        base.OnClickedTrigger();
+        GetComponentInParent<ProgrammingSystem>().passwordParameter.SetActive(true);
+        GetComponentInParent<ProgrammingSystem>().ActiveParameter = GetComponentInParent<ProgrammingSystem>().passwordParameter;
     }
 }

@@ -5,12 +5,18 @@ using UnityEngine;
 public class DoorActions : MonoBehaviour
 {
     public bool closeDoorOnAlive = false;
-    public bool openDoorOnAlive = false;
+    public bool openDoorOnAlivew = false;
     public bool doorIsOpen = false;
+
+    public GameObject ActiveTrigger;
+    public GameObject ActiveAction;
+    public GameObject ActiveParameter;
+
+    public string currentPassword;
 
     public void Start()
     {
-        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<BoxCollider>().enabled = true;
     }
 
     public void OpenDoor()
@@ -40,21 +46,42 @@ public class DoorActions : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (openDoorOnAlive && !doorIsOpen)
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen)
             {
                 OpenDoor();
             }
-            if (closeDoorOnAlive && doorIsOpen)
+        }
+        if (other.gameObject.tag == "Player")
+        {
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen)
+            {
+                OpenDoor();
+            }
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen)
             {
                 CloseDoor();
             }
         }
     }
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (doorIsOpen)
-    //    {
-    //        CloseDoor();
-    //    }
-    //}
+    public void PasswordAction(string password)
+    {
+        if (currentPassword == password)
+        {
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen)
+            {
+                OpenDoor();
+            }
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen)
+            {
+                CloseDoor();
+            }
+        }
+    }
 }

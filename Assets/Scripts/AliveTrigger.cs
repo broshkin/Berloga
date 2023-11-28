@@ -7,6 +7,6 @@ public class AliveTrigger : Trigger
 
     public void acivateTrigger()
     {
-        GetComponentInParent<ProgrammingSystem>().interactObject.GetComponent<BoxCollider>().enabled = true;
+        GetComponentInParent<ProgrammingSystem>().interactObject.GetComponent<DoorActions>().ActiveTrigger = gameObject;
     }
 }

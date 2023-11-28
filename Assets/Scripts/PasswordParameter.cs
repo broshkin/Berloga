@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PasswordParameter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void activateParameter()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        var currentPsw = gameObject.GetComponent<InputField>().text;
+        GetComponentInParent<ProgrammingSystem>().interactObject.GetComponent<DoorActions>().currentPassword = currentPsw;
     }
 }

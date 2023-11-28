@@ -10,7 +10,7 @@ public class ProgrammingSystem : MonoBehaviour
     public bool isActionActive = false;
     public GameObject ActiveAction = null;
     public bool isParameterActive = false;
-
+    public GameObject ActiveParameter = null;
     public bool isTriggerFull = false;
     public bool isActionFull = false;
     public bool isParameterFull = false;
@@ -26,6 +26,8 @@ public class ProgrammingSystem : MonoBehaviour
     public GameObject ParameterField;
 
     public GameObject interactObject;
+
+    public GameObject passwordParameter;
 
     public void Start()
     {
@@ -64,10 +66,27 @@ public class ProgrammingSystem : MonoBehaviour
         {
             at.acivateTrigger();
         }
+        if (ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+        {
+            pt.activateTrigger();
+        }
         if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa))
         {
             oa.activateAction();
         }
+        if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca))
+        {
+            ca.activateAction();
+        }
         gameObject.SetActive(false);
+    }
+    public void ResetButton()
+    {
+        Destroy(ActiveTrigger);
+        ActiveTrigger = null;
+        Destroy(ActiveAction);
+        ActiveAction = null;
+        Destroy(ActiveParameter);
+        ActiveParameter = null;
     }
 }
