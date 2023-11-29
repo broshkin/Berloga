@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ProgrammingSystem : MonoBehaviour
 {
+    public int id;
+
     public bool isTriggerActive = false;
     public GameObject ActiveTrigger = null;
     public bool isActionActive = false;
@@ -31,7 +33,7 @@ public class ProgrammingSystem : MonoBehaviour
 
     public void Start()
     {
-        TriggersView.SetActive(false); ActionsView.SetActive(false);
+        TriggersView.SetActive(false); ActionsView.SetActive(false); passwordParameter.SetActive(false);
     }
     public  void OnTriggerClicked()
     {
@@ -78,7 +80,6 @@ public class ProgrammingSystem : MonoBehaviour
         {
             ca.activateAction();
         }
-        gameObject.SetActive(false);
     }
     public void ResetButton()
     {

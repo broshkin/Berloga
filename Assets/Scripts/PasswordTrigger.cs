@@ -14,7 +14,7 @@ public class PasswordTrigger : Trigger
     public override void OnClickedTrigger()
     {
         base.OnClickedTrigger();
-        GetComponentInParent<ProgrammingSystem>().passwordParameter.SetActive(true);
-        GetComponentInParent<ProgrammingSystem>().ActiveParameter = GetComponentInParent<ProgrammingSystem>().passwordParameter;
+        GetComponentInParent<ProgrammingSystem>().ActiveParameter = Instantiate(GetComponentInParent<ProgrammingSystem>().passwordParameter, GetComponentInParent<ProgrammingSystem>().ParameterField.transform);
+        GetComponentInParent<ProgrammingSystem>().ActiveParameter.SetActive(true);
     }
 }

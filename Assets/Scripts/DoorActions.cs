@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class DoorActions : MonoBehaviour
 {
+    public int id;
+
     public bool closeDoorOnAlive = false;
     public bool openDoorOnAlivew = false;
     public bool doorIsOpen = false;
 
-    public GameObject ActiveTrigger;
-    public GameObject ActiveAction;
-    public GameObject ActiveParameter;
+    public GameObject ActiveTrigger = null;
+    public GameObject ActiveAction = null;
+    public GameObject ActiveParameter = null;
 
-    public string currentPassword;
+    public GameObject passwordCanvas;
+
+    public string realPassword;
 
     public void Start()
     {
@@ -44,41 +48,49 @@ public class DoorActions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen)
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
             {
                 OpenDoor();
             }
         }
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen)
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
-                OpenDoor();
+                passwordCanvas.SetActive(true);
             }
         }
 
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen)
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
             {
                 CloseDoor();
+            }
+        }
+        if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
+        {
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            {
+                passwordCanvas.SetActive(false);
+                passwordCanvas.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
     }
     public void PasswordAction(string password)
     {
-        if (currentPassword == password)
+        if (realPassword == password && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen)
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt1))
             {
                 OpenDoor();
             }
-            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen)
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt2))
             {
                 CloseDoor();
             }
