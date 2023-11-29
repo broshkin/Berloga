@@ -8,7 +8,7 @@ public class PasswordParameter : MonoBehaviour
 {
     public void activateParameter()
     {
-        var currentPsw = gameObject.GetComponent<InputField>().text;
+        var currentPsw = gameObject.GetComponentInChildren<TMP_InputField>().text;
         GetComponentInParent<ProgrammingSystem>().interactObject.GetComponent<DoorActions>().realPassword = currentPsw;
     }
 }

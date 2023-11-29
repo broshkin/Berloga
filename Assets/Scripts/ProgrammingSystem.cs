@@ -64,21 +64,31 @@ public class ProgrammingSystem : MonoBehaviour
     }
     public void ApplyChanges()
     {
-        if (ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+        if (ActiveAction && ActiveTrigger)
         {
-            at.acivateTrigger();
-        }
-        if (ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
-        {
-            pt.activateTrigger();
-        }
-        if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa))
-        {
-            oa.activateAction();
-        }
-        if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca))
-        {
-            ca.activateAction();
+            if (ActiveParameter)
+            {
+                if (ActiveParameter.TryGetComponent<PasswordParameter>(out PasswordParameter pp))
+                {
+                    pp.activateParameter();
+                }
+            }
+            if (ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+            {
+                at.acivateTrigger();
+            }
+            if (ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            {
+                pt.activateTrigger();
+            }
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa))
+            {
+                oa.activateAction();
+            }
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca))
+            {
+                ca.activateAction();
+            }
         }
     }
     public void ResetButton()
@@ -89,5 +99,8 @@ public class ProgrammingSystem : MonoBehaviour
         ActiveAction = null;
         Destroy(ActiveParameter);
         ActiveParameter = null;
+        interactObject.GetComponent<DoorActions>().ActiveTrigger = null;
+        interactObject.GetComponent<DoorActions>().ActiveAction = null;
+        interactObject.GetComponent<DoorActions>().ActiveParameter = null;
     }
 }

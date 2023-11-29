@@ -6,8 +6,6 @@ public class DoorActions : MonoBehaviour
 {
     public int id;
 
-    public bool closeDoorOnAlive = false;
-    public bool openDoorOnAlivew = false;
     public bool doorIsOpen = false;
 
     public GameObject ActiveTrigger = null;
@@ -57,7 +55,14 @@ public class DoorActions : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && !doorIsOpen && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            {
+                passwordCanvas.SetActive(true);
+            }
+        }
+        if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
+        {
+            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
             }
@@ -73,14 +78,11 @@ public class DoorActions : MonoBehaviour
                 CloseDoor();
             }
         }
-        if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
+        if (other.gameObject.tag == "Player")
         {
-            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && doorIsOpen && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
-            {
-                passwordCanvas.SetActive(false);
-                passwordCanvas.transform.GetChild(1).gameObject.SetActive(false);
-            }
+            passwordCanvas.SetActive(false);
         }
+
     }
     public void PasswordAction(string password)
     {
