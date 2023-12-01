@@ -26,7 +26,10 @@ public class passwordCanvas : MonoBehaviour
     public void OnClicked()
     {
         getpw = GetComponentInChildren<TMP_InputField>().text;
-        interactObject.GetComponent<DoorActions>().PasswordAction(getpw);
+        foreach (var da in interactObject.GetComponents<DoorActions>())
+        {
+            da.PasswordAction(getpw);
+        }
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
     }

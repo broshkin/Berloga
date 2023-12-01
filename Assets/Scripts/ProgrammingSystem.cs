@@ -30,10 +30,11 @@ public class ProgrammingSystem : MonoBehaviour
     public GameObject interactObject;
 
     public GameObject passwordParameter;
+    public GameObject buttonParameter;
 
     public void Start()
     {
-        TriggersView.SetActive(false); ActionsView.SetActive(false); passwordParameter.SetActive(false);
+        TriggersView.SetActive(false); ActionsView.SetActive(false); passwordParameter.SetActive(false); buttonParameter.SetActive(false);
     }
     public  void OnTriggerClicked()
     {
@@ -61,35 +62,6 @@ public class ProgrammingSystem : MonoBehaviour
         TriggersView.SetActive(isTriggerActive);
         ActionsView.SetActive(isActionActive);
         //ParametersView.SetActive(isParameterActive);
-    }
-    public void ApplyChanges()
-    {
-        if (ActiveAction && ActiveTrigger)
-        {
-            if (ActiveParameter)
-            {
-                if (ActiveParameter.TryGetComponent<PasswordParameter>(out PasswordParameter pp))
-                {
-                    pp.activateParameter();
-                }
-            }
-            if (ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
-            {
-                at.acivateTrigger();
-            }
-            if (ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
-            {
-                pt.activateTrigger();
-            }
-            if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa))
-            {
-                oa.activateAction();
-            }
-            if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca))
-            {
-                ca.activateAction();
-            }
-        }
     }
     public void ResetButton()
     {

@@ -8,8 +8,15 @@ public class PasswordTrigger : Trigger
     {
         var prgSys = GetComponentInParent<ProgrammingSystem>();
         var parameter = prgSys.ActiveParameter;
-        prgSys.interactObject.GetComponent<DoorActions>().ActiveTrigger = gameObject;
-        prgSys.interactObject.GetComponent<DoorActions>().ActiveParameter = parameter;
+        foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<DoorActions>())
+        {
+            if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+            {
+                act.ActiveTrigger = gameObject;
+                act.ActiveParameter = parameter;
+                break;
+            }
+        }
     }
     public override void OnClickedTrigger()
     {

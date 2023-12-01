@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Action : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class Action : MonoBehaviour
             prefabAction.GetComponent<Button>().enabled = false;
             prgSys.isActionFull = true;
             prgSys.ActiveAction = prefabAction;
+            gameObject.GetComponent<Button>().enabled = false;
+            gameObject.GetComponent<Image>().color = Color.grey;
         }
     }
 
