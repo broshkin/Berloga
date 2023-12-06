@@ -17,9 +17,33 @@ public class ButtonCanvas : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            foreach (var da in interactObject.GetComponents<DoorActions>())
+            if (interactObject.tag == "Door")
             {
-                da.ButtonAction();
+                foreach (var da in interactObject.GetComponents<DoorActions>())
+                {
+                    da.ButtonAction();
+                }
+            }
+            if (interactObject.tag == "Car")
+            {
+                foreach (var ca in interactObject.GetComponents<CarActions>())
+                {
+                    ca.ButtonAction();
+                }
+            }
+            if (interactObject.tag == "Crane")
+            {
+                foreach (var cra in interactObject.GetComponents<CraneActions>())
+                {
+                    cra.ButtonAction();
+                }
+            }
+            if (interactObject.tag == "Portal")
+            {
+                foreach (var pa in interactObject.GetComponents<PortalActions>())
+                {
+                    pa.ButtonAction();
+                }
             }
             gameObject.SetActive(false);
         }

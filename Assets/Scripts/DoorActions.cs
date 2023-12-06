@@ -35,6 +35,7 @@ public class DoorActions : MonoBehaviour
             if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
+                passwordCanvas.GetComponent<passwordCanvas>().interactObject = gameObject;
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
@@ -42,6 +43,7 @@ public class DoorActions : MonoBehaviour
             if (ActiveAction.TryGetComponent<OpenAction>(out OpenAction oa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
             {
                 buttonCanvas.SetActive(true);
+                buttonCanvas.GetComponent<ButtonCanvas>().interactObject = gameObject;
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
@@ -49,6 +51,7 @@ public class DoorActions : MonoBehaviour
             if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
+                passwordCanvas.GetComponent<passwordCanvas>().interactObject = gameObject;
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
@@ -56,6 +59,7 @@ public class DoorActions : MonoBehaviour
             if (ActiveAction.TryGetComponent<CloseAction>(out CloseAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
             {
                 buttonCanvas.SetActive(true);
+                buttonCanvas.GetComponent<ButtonCanvas>().interactObject = gameObject;
             }
         }
 

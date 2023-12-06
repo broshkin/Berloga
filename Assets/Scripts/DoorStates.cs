@@ -15,11 +15,13 @@ public class DoorStates : MonoBehaviour
     {
         GetComponent<Animator>().SetBool("OpenDoor", true);
         doorIsOpen = true;
+        GetComponent<AudioSource>().Play();
     }
     public void CloseDoor()
     {
         GetComponent<Animator>().SetBool("CloseDoor", true);
         doorIsOpen = false;
+        GetComponent<AudioSource>().Play();
     }
 
     public void Update()

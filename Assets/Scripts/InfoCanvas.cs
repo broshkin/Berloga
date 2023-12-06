@@ -27,6 +27,8 @@ public class InfoCanvas : MonoBehaviour
         {
             infoCanvas.SetActive(false);
             programmingSystem.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             isActive = false;
         }
     }
@@ -38,6 +40,8 @@ public class InfoCanvas : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P))
             {
                 programmingSystem.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
     }

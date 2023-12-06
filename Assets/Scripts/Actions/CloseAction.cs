@@ -2,12 +2,15 @@ public class CloseAction : Action
 {
     public void activateAction()
     {
-        foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<DoorActions>())
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Door")
         {
-            if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<DoorActions>())
             {
-                act.ActiveAction = gameObject;
-                break;
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveAction = gameObject;
+                    break;
+                }
             }
         }
         

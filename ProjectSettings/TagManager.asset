@@ -31,6 +31,14 @@ TagManager:
   - Interactable
   - AIAction
   - BG
+  - OpenAction
+  - CloseAction
+  - Door
+  - Car
+  - MagniteObject
+  - Crane
+  - Portal
+  - DialogObject
   layers:
   - Default
   - TransparentFX

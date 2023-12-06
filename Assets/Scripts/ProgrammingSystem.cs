@@ -31,6 +31,7 @@ public class ProgrammingSystem : MonoBehaviour
 
     public GameObject passwordParameter;
     public GameObject buttonParameter;
+    public GameObject magniteParameter;
 
     public void Start()
     {
@@ -65,14 +66,33 @@ public class ProgrammingSystem : MonoBehaviour
     }
     public void ResetButton()
     {
-        Destroy(ActiveTrigger);
-        ActiveTrigger = null;
-        Destroy(ActiveAction);
-        ActiveAction = null;
-        Destroy(ActiveParameter);
-        ActiveParameter = null;
-        interactObject.GetComponent<DoorActions>().ActiveTrigger = null;
-        interactObject.GetComponent<DoorActions>().ActiveAction = null;
-        interactObject.GetComponent<DoorActions>().ActiveParameter = null;
+        if (ActiveTrigger || ActiveAction )
+        {
+            Destroy(ActiveTrigger);
+            ActiveTrigger = null;
+            GetComponentInParent<ApplyPrgSysChanges>().ResetActions(ActiveAction.name.Split('(')[0]);
+            Destroy(ActiveAction);
+            ActiveAction = null;
+            Destroy(ActiveParameter);
+            ActiveParameter = null;
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Door")
+        {
+            interactObject.GetComponent<DoorActions>().ActiveTrigger = null;
+            interactObject.GetComponent<DoorActions>().ActiveAction = null;
+            interactObject.GetComponent<DoorActions>().ActiveParameter = null;
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Car")
+        {
+            interactObject.GetComponent<CarActions>().ActiveTrigger = null;
+            interactObject.GetComponent<CarActions>().ActiveAction = null;
+            interactObject.GetComponent<CarActions>().ActiveParameter = null;
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Crane")
+        {
+            interactObject.GetComponent<CraneActions>().ActiveTrigger = null;
+            interactObject.GetComponent<CraneActions>().ActiveAction = null;
+            interactObject.GetComponent<CraneActions>().ActiveParameter = null;
+        }
     }
 }

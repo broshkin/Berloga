@@ -21,16 +21,44 @@ public class passwordCanvas : MonoBehaviour
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
     public void OnClicked()
     {
         getpw = GetComponentInChildren<TMP_InputField>().text;
-        foreach (var da in interactObject.GetComponents<DoorActions>())
+        if (interactObject.tag == "Door")
         {
-            da.PasswordAction(getpw);
+            foreach (var da in interactObject.GetComponents<DoorActions>())
+            {
+                da.PasswordAction(getpw);
+            }
+        }
+        if (interactObject.tag == "Car")
+        {
+            foreach (var da in interactObject.GetComponents<CarActions>())
+            {
+                da.PasswordAction(getpw);
+            }
+        }
+        if (interactObject.tag == "Crane")
+        {
+            foreach (var da in interactObject.GetComponents<CraneActions>())
+            {
+                da.PasswordAction(getpw);
+            }
+        }
+        if (interactObject.tag == "Portal")
+        {
+            foreach (var da in interactObject.GetComponents<PortalActions>())
+            {
+                da.PasswordAction(getpw);
+            }
         }
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

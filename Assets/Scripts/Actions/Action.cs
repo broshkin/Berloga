@@ -20,9 +20,13 @@ public class Action : MonoBehaviour
         gameObject.GetComponentInChildren<TextMeshProUGUI>().text = name;
         gameObject.GetComponent<Image>().sprite = icon;
     }
-    public void OnClickedAction()
+    public virtual void OnClickedAction()
     {
         var prgSys = gameObject.GetComponentInParent<ProgrammingSystem>();
+        if (prgSys.ActiveAction != null)
+        {
+            GetComponentInParent<ApplyPrgSysChanges>().ResetActions(prgSys.ActiveAction.name.Split('(')[0]);
+        }
         if (prgSys.ActiveAction != gameObject)
         {
             var actionField = prgSys.ActionField;
@@ -36,8 +40,7 @@ public class Action : MonoBehaviour
             prefabAction.GetComponent<Button>().enabled = false;
             prgSys.isActionFull = true;
             prgSys.ActiveAction = prefabAction;
-            gameObject.GetComponent<Button>().enabled = false;
-            gameObject.GetComponent<Image>().color = Color.grey;
+            GetComponentInParent<ApplyPrgSysChanges>().ApplyActions();
         }
     }
 

@@ -18,8 +18,8 @@ namespace Invector.vCharacterController
 
         [vEditorToolbar("Inputs")]
         [vHelpBox("Check these options if you need to use the mouse cursor, ex: <b>2.5D, Topdown or Mobile</b>", vHelpBoxAttribute.MessageType.Info)]
-        public bool unlockCursorOnStart = true;
-        public bool showCursorOnStart = true;
+        public bool unlockCursorOnStart = false;
+        public bool showCursorOnStart = false;
         [vHelpBox("PC only - use it to toggle between run/walk", vHelpBoxAttribute.MessageType.Info)]
         public KeyCode toggleWalk = KeyCode.CapsLock;
 

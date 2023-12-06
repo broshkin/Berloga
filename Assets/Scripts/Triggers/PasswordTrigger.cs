@@ -8,15 +8,55 @@ public class PasswordTrigger : Trigger
     {
         var prgSys = GetComponentInParent<ProgrammingSystem>();
         var parameter = prgSys.ActiveParameter;
-        foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<DoorActions>())
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Door")
         {
-            if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<DoorActions>())
             {
-                act.ActiveTrigger = gameObject;
-                act.ActiveParameter = parameter;
-                break;
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
             }
         }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Car")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<CarActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
+            }
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Crane")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<CraneActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
+            }
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Portal")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<PortalActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
+            }
+        }
+
     }
     public override void OnClickedTrigger()
     {
