@@ -13,7 +13,7 @@ public class MagnitePower : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 f = target.transform.position + new Vector3(4, 0, 0) - transform.position;
         gameObject.GetComponent<Rigidbody>().AddForce(f.normalized * power / f.magnitude);
