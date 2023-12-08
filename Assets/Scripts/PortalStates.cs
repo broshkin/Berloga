@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PortalStates : MonoBehaviour
@@ -38,7 +36,7 @@ public class PortalStates : MonoBehaviour
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("activateStatus") && Once)
         {
             Once = false;
-            GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().dialogNum = 2;
+            DialogSystem.dialogNum = 2;
             GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
         }
     }

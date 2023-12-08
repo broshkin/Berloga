@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class AliveTrigger : Trigger
 {
 
@@ -43,6 +39,17 @@ public class AliveTrigger : Trigger
         if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Portal")
         {
             foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<PortalActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    break;
+                }
+            }
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Rover")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<RoverActions>())
             {
                 if (act.id == GetComponentInParent<ProgrammingSystem>().id)
                 {

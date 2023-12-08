@@ -39,6 +39,8 @@ TagManager:
   - Crane
   - Portal
   - DialogObject
+  - Wheel
+  - Rover
   layers:
   - Default
   - TransparentFX

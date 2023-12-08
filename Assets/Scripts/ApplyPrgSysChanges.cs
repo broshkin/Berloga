@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -133,6 +132,14 @@ public class ApplyPrgSysChanges : MonoBehaviour
                 if (prg.ActiveAction.TryGetComponent<DeactivatePortalAction>(out DeactivatePortalAction dpa))
                 {
                     dpa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<ActivateEngineAction>(out ActivateEngineAction aea))
+                {
+                    aea.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<DeactivateEngineAction>(out DeactivateEngineAction dea))
+                {
+                    dea.activateAction();
                 }
             }
         }

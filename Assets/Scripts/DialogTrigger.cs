@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogTrigger : MonoBehaviour
@@ -11,8 +9,8 @@ public class DialogTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            father.GetComponent<DialogSystem>().dialogNum = dialogNum;
-            father.GetComponent <DialogSystem>().ShowMessage();
+            DialogSystem.dialogNum = dialogNum;
+            father.GetComponent<DialogSystem>().ShowMessage();
             Destroy(gameObject);
         }
     }

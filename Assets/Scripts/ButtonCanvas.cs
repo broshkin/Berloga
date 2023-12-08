@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class ButtonCanvas : MonoBehaviour
@@ -41,6 +38,13 @@ public class ButtonCanvas : MonoBehaviour
             if (interactObject.tag == "Portal")
             {
                 foreach (var pa in interactObject.GetComponents<PortalActions>())
+                {
+                    pa.ButtonAction();
+                }
+            }
+            if (interactObject.tag == "Portal")
+            {
+                foreach (var pa in interactObject.GetComponents<RoverActions>())
                 {
                     pa.ButtonAction();
                 }

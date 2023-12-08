@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 public class passwordCanvas : MonoBehaviour
 {
@@ -52,6 +49,13 @@ public class passwordCanvas : MonoBehaviour
         if (interactObject.tag == "Portal")
         {
             foreach (var da in interactObject.GetComponents<PortalActions>())
+            {
+                da.PasswordAction(getpw);
+            }
+        }
+        if (interactObject.tag == "Rover")
+        {
+            foreach (var da in interactObject.GetComponents<RoverActions>())
             {
                 da.PasswordAction(getpw);
             }
