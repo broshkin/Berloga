@@ -42,7 +42,7 @@ public class ButtonCanvas : MonoBehaviour
                     pa.ButtonAction();
                 }
             }
-            if (interactObject.tag == "Portal")
+            if (interactObject.tag == "Rover")
             {
                 foreach (var pa in interactObject.GetComponents<RoverActions>())
                 {
