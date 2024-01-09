@@ -57,6 +57,7 @@ public class passwordCanvas : MonoBehaviour
         {
             foreach (var da in interactObject.GetComponents<RoverActions>())
             {
+                Debug.Log(2);
                 da.PasswordAction(getpw);
             }
         }

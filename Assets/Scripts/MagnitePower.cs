@@ -15,6 +15,5 @@ public class MagnitePower : MonoBehaviour
     {
         Vector3 f = target.transform.position + new Vector3(4, 0, 0) - transform.position;
         gameObject.GetComponent<Rigidbody>().AddForce(f.normalized * power / f.magnitude);
-        Debug.Log(f.magnitude);
     }
 }

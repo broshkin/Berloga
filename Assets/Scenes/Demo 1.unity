@@ -2919,6 +2919,7 @@ MonoBehaviour:
   - {fileID: 780882912}
   - {fileID: 895462709}
   actionComponents: []
+  interactObject: {fileID: 0}
 --- !u!114 &154599079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17948,7 +17949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   getpw: 
-  interactObject: {fileID: 0}
+  interactObject: {fileID: 1456348987}
 --- !u!114 &983800763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23437,7 +23438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b96534e979b28af4697f0ba73dcbb479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactObject: {fileID: 0}
+  interactObject: {fileID: 1456348987}
 --- !u!114 &1413912496
 MonoBehaviour:
   m_ObjectHideFlags: 0

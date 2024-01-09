@@ -50,5 +50,16 @@ public class PasswordParameter : MonoBehaviour
                 }
             }
         }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Rover")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<RoverActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.realPassword = currentPsw;
+                    break;
+                }
+            }
+        }
     }
 }

@@ -21,11 +21,13 @@ public class RoverStates : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
         isEngineActive = true;
+        finishCanvas.SetActive(true);
     }
     public void DeactivateEngine()
     {
         GetComponent<AudioSource>().Stop();
         isEngineActive = false;
+        finishCanvas.SetActive(false);
     }
     public void Update()
     {

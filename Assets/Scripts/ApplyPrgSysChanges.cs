@@ -6,18 +6,22 @@ public class ApplyPrgSysChanges : MonoBehaviour
 {
     public ProgrammingSystem[] programmingSystems = null;
     public List<string> actionComponents = null;
+    public GameObject interactObject;
 
     public void OnClicked()
     {
+        interactObject = programmingSystems[0].interactObject;
         foreach (var programmingSystem in programmingSystems)
         {
             programmingSystem.gameObject.SetActive(true);
         }
         ApplyChanges();
+        interactObject.GetComponent<BoxCollider>().enabled = false;
         foreach (var programmingSystem in programmingSystems)
         {
             programmingSystem.gameObject.SetActive(false);
         }
+        interactObject.GetComponent<BoxCollider>().enabled = true;
     }
     public void ApplyActions()
     {
