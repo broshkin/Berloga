@@ -41,6 +41,10 @@ TagManager:
   - DialogObject
   - Wheel
   - Rover
+  - FortressExit
+  - FortressEnter
+  - AltarExit
+  - AltarEnter
   layers:
   - Default
   - TransparentFX
