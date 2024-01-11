@@ -5,6 +5,8 @@ using TMPro;
 public class EnterInFortress : MonoBehaviour
 {
     public GameObject canvas;
+    public static int lastScene;
+    public bool inZone = false;
     private void Start()
     {
         canvas.SetActive(false);   
@@ -13,6 +15,7 @@ public class EnterInFortress : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            inZone = true;
             canvas.SetActive(true);
             if (gameObject.tag == "FortressEnter")
             {
@@ -36,6 +39,7 @@ public class EnterInFortress : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            inZone = false;
             canvas.SetActive(false);
         }
     }
@@ -43,14 +47,17 @@ public class EnterInFortress : MonoBehaviour
     {
         if (canvas.activeSelf)
         {    
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && inZone)
             {
+                Debug.Log(gameObject.tag);
                 if (gameObject.tag == "FortressEnter")
                 {
+                    lastScene = 3;
                     SceneManager.LoadScene(4);
                 }
                 if (gameObject.tag == "FortressExit")
                 {
+                    lastScene = 4;
                     SceneManager.LoadScene(3);
                 }
                 if (gameObject.tag == "AltarEnter")
@@ -59,6 +66,7 @@ public class EnterInFortress : MonoBehaviour
                 }
                 if (gameObject.tag == "AltarExit")
                 {
+                    lastScene = 5;
                     SceneManager.LoadScene(4);
                 }
             }
