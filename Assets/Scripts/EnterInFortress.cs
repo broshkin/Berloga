@@ -49,7 +49,6 @@ public class EnterInFortress : MonoBehaviour
         {    
             if (Input.GetKeyDown(KeyCode.E) && inZone)
             {
-                Debug.Log(gameObject.tag);
                 if (gameObject.tag == "FortressEnter")
                 {
                     lastScene = 3;

@@ -78,13 +78,10 @@ public class RoverActions : MonoBehaviour
     }
     public void PasswordAction(string password)
     {
-        Debug.Log(13);
         if (realPassword == password && ActiveAction && ActiveTrigger)
         {
-            Debug.Log(12);
             if (ActiveAction.TryGetComponent<ActivateEngineAction>(out ActivateEngineAction oa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt1))
             {
-                Debug.Log(1);
                 GetComponent<RoverStates>().ActivateEngine();
             }
             else if (ActiveAction.TryGetComponent<DeactivateEngineAction>(out DeactivateEngineAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt2))
