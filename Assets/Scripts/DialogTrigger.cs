@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DialogTrigger : MonoBehaviour
 {
@@ -10,7 +11,17 @@ public class DialogTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             DialogSystem.dialogNum = dialogNum;
-            father.GetComponent<DialogSystem>().ShowMessage();
+            if (SceneManager.GetActiveScene().name == "Demo 3")
+            {
+                if (DialogSystem.onceInFortress)
+                {
+                    father.GetComponent<DialogSystem>().ShowMessage();
+                }
+            }
+            else
+            {
+                father.GetComponent<DialogSystem>().ShowMessage();
+            }
             Destroy(gameObject);
         }
     }

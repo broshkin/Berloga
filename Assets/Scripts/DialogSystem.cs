@@ -13,12 +13,15 @@ public class DialogSystem : MonoBehaviour
     public static bool isAdmin = false;
     public static bool isArtemiy = false;
     public static bool isAndrey = false;
+    public static bool isSecondAndrey = false;
     public static bool isMain = false;
+    public static bool onceInFortress = true;
 
     public GameObject assistent;
     public GameObject admin;
     public GameObject artemiy;
     public GameObject andrey;
+    public GameObject secondAndrey;
     public GameObject main;
 
     private static List<string> messages = new List<string>();
@@ -41,6 +44,12 @@ public class DialogSystem : MonoBehaviour
         messages.Add("*Подкрадывается заде и толкает в портал*");
         messages.Add("Где я? Кто меня сюда толкнул? Куда делся Андрей? Что вообще случилось? Вездеход почти целый, кто его успел восстановить? Так, осталось найти колёса и срочно искать Андрея!");
         messages.Add("А вот и колёса! Почему они так аккуратно укрыты? Ладно, сейчас надо действовать. Осталось закрепить их на передней оси вездехода.");
+        messages.Add("Вот мы и снова увиделись...");
+        messages.Add("Я думал, что ко мне уже никто не придёт...");
+        messages.Add("Я уже больше года ошиваюсь на этой планете и пытаюсь найти выход отсюда. В следующей комнате находится портал, через него можно вернуться на станцию.");
+        messages.Add("Но для его работы необходимо добыть три артефакта.");
+        messages.Add("Вот карта с их местоположениями. Всё это время я составлял её.");
+        messages.Add("Отправляйся в путь и найди их. Я верю в тебя");
     }
 
     // Update is called once per frame
@@ -77,6 +86,14 @@ public class DialogSystem : MonoBehaviour
         else
         {
             andrey.SetActive(false);
+        }
+        if (isSecondAndrey)
+        {
+            secondAndrey.SetActive(true);
+        }
+        else
+        {
+            secondAndrey.SetActive(false);
         }
         if (isMain)
         {
@@ -117,6 +134,14 @@ public class DialogSystem : MonoBehaviour
         {
             isMain = true;
         }
+        if (dialogNum >= 7 && dialogNum <= 12)
+        {
+            isSecondAndrey = true;
+        }
+        if (dialogNum == 12)
+        {
+            onceInFortress = false;
+        }
         showableText.text = messages[dialogNum].ToString();
     }
     public void AfterClickDialog()
@@ -126,6 +151,7 @@ public class DialogSystem : MonoBehaviour
         isAdmin = false;
         isArtemiy = false;
         isAssistent = false;
+        isSecondAndrey = false;
         isMain = false;
         Time.timeScale = 1;
         if (dialogNum == 2)
@@ -137,6 +163,10 @@ public class DialogSystem : MonoBehaviour
             SceneManager.LoadScene("Demo 1");
         }
         if (dialogNum == 4 || dialogNum == 3)
+        {
+            ShowMessage();
+        }
+        if (dialogNum >= 7 && dialogNum <= 12 && onceInFortress)
         {
             ShowMessage();
         }
