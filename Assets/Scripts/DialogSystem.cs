@@ -41,7 +41,7 @@ public class DialogSystem : MonoBehaviour
         messages.Add("Гриш, привет! Тут одно дело появилось, у нас на планете BEAR-2023 сломался вездеход, его необходимо починить. Ты не переживай, с тобой будет наш первопроходец - Андрей. Он сходит за ним, а тебе всего лишь отремонтировать его на станции, только, пожалуйста, включи ему портал, а то он совсем не умеет им пользоваться. Спасибо!");
         messages.Add("Привет! Я Андрей, первопроходец, я так полагаю, ты Гриша, ну что ж, сейчас я мигом схожу за вездеходом и принесу его, благо на этой планете есть атмосфера, даже скафандр не пригодится!");
         messages.Add("*Хе-хе-хе-хе*");
-        messages.Add("*Подкрадывается заде и толкает в портал*");
+        messages.Add("*Подкрадывается сзаде и толкает в портал*");
         messages.Add("Где я? Кто меня сюда толкнул? Куда делся Андрей? Что вообще случилось? Вездеход почти целый, кто его успел восстановить? Так, осталось найти колёса и срочно искать Андрея!");
         messages.Add("А вот и колёса! Почему они так аккуратно укрыты? Ладно, сейчас надо действовать. Осталось закрепить их на передней оси вездехода.");
         messages.Add("Вот мы и снова увиделись...");
@@ -157,16 +157,18 @@ public class DialogSystem : MonoBehaviour
         if (dialogNum == 2)
         {
             openableDoor.GetComponent<DoorStates>().OpenDoor();
+            textBG.SetActive(false);
         }
-        if (dialogNum == 5)
+        else if (dialogNum == 5)
         {
             SceneManager.LoadScene("Demo 1");
+            textBG.SetActive(false);
         }
-        if (dialogNum == 4 || dialogNum == 3)
+        else if (dialogNum == 4 || dialogNum == 3)
         {
             ShowMessage();
         }
-        if (dialogNum >= 7 && dialogNum <= 12 && onceInFortress)
+        else if (dialogNum >= 7 && dialogNum <= 12 && onceInFortress)
         {
             ShowMessage();
         }
