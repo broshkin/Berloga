@@ -45,6 +45,8 @@ TagManager:
   - FortressEnter
   - AltarExit
   - AltarEnter
+  - Mirror
+  - Light
   layers:
   - Default
   - TransparentFX
