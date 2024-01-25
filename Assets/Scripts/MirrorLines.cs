@@ -46,11 +46,11 @@ public class MirrorLines : MonoBehaviour
                     var z = 0f;
                     if (gameObject.transform.eulerAngles.x - other.transform.eulerAngles.x != 0)
                     {
-                        x = -(180 - Math.Abs(gameObject.transform.eulerAngles.x - other.transform.eulerAngles.x) * 2);
+                        x = -(180 - Math.Abs(gameObject.transform.eulerAngles.x * 2 - other.transform.eulerAngles.x)) + gameObject.transform.eulerAngles.x / 2;
                     }
                     if (gameObject.transform.eulerAngles.z - other.transform.eulerAngles.z != 0)
                     {
-                        z = -(180 - Math.Abs(gameObject.transform.eulerAngles.z - other.transform.eulerAngles.z) * 2);
+                        z = -(180 - Math.Abs(gameObject.transform.eulerAngles.z * 2 - other.transform.eulerAngles.z)) + gameObject.transform.eulerAngles.z / 2;
                     }
                     quat.eulerAngles = new Vector3(x, 0, z);
                     childRay = Instantiate(rayPrefab, other.transform.position, quat);
@@ -64,11 +64,11 @@ public class MirrorLines : MonoBehaviour
         var z = 0f;
         if (gameObject.transform.eulerAngles.x - other.transform.eulerAngles.x != 0)
         {
-            x = -(180 - Math.Abs(gameObject.transform.eulerAngles.x - other.transform.eulerAngles.x) * 2);
+            x = -(180 - Math.Abs(gameObject.transform.eulerAngles.x * 2 - other.transform.eulerAngles.x)) + gameObject.transform.eulerAngles.x / 2;
         }
         if (gameObject.transform.eulerAngles.z - other.transform.eulerAngles.z != 0)
         {
-            z = -(180 - Math.Abs(gameObject.transform.eulerAngles.z - other.transform.eulerAngles.z) * 2);
+            z = -(180 - Math.Abs(gameObject.transform.eulerAngles.z * 2 - other.transform.eulerAngles.z)) + gameObject.transform.eulerAngles.z / 2;
         }
         quat.eulerAngles = new Vector3(x, 0, z);
         if (other.gameObject == lightTarget)
