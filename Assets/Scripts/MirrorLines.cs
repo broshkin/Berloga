@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class MirrorLines : MonoBehaviour
 {
     public bool blocked = false;
     public GameObject rayPrefab;
     private GameObject childRay;
+    public GameObject parentRay;
     public GameObject lightTarget;
+    public Ray ray = new Ray();
 
     private void Start()
     {
@@ -18,62 +17,65 @@ public class MirrorLines : MonoBehaviour
     }
     private void Update()
     {
-        if (!blocked)
+        ray = new Ray();
+        RaycastHit hit;
+        ray.origin = transform.position;
+        if (gameObject.name == "MirrorRay")
         {
-            gameObject.transform.localScale += new Vector3(0, 0.1f, 0);
+            ray.direction = Vector3.down;
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag != "Light")
+        else
         {
-            if (other.tag == "Mirror" && other.GetComponent<MirrorBool>().withRay)
+            ray.direction = Vector3.Reflect(parentRay.GetComponent<MirrorLines>().ray.direction, parentRay.GetComponent<MirrorLines>().lightTarget.transform.forward);
+        }
+        Debug.DrawRay(ray.origin, ray.direction * 25);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.gameObject.tag == "Mirror" && !hit.collider.gameObject.GetComponent<MirrorBool>().withRay)
             {
-
+                lightTarget = hit.collider.gameObject;
+                hit.collider.gameObject.GetComponent<MirrorBool>().withRay = true;
+                childRay = Instantiate(rayPrefab, hit.point, Quaternion.LookRotation(Vector3.Reflect(ray.direction, lightTarget.transform.forward)) * Quaternion.Euler(-90, 0, 0));
+                childRay.GetComponent<MirrorLines>().parentRay = gameObject;
+                childRay.transform.localScale = new Vector3(1, 0.1f, 1);
+            }
+            if (hit.collider.gameObject == lightTarget)
+            {
+                var heading = lightTarget.transform.position - transform.position;
+                var distance = heading.magnitude;
+                var direction = heading / distance;
+                var reflVec = Vector3.Reflect(direction, lightTarget.transform.up);
+                childRay.transform.position = hit.point;
+                childRay.GetComponent<MirrorLines>().ray.origin = hit.point;
+                childRay.transform.rotation = Quaternion.LookRotation(reflVec) * Quaternion.Euler(-90, 0, 0);
             }
             else
             {
-                blocked = true;
-                if (other.tag == "Mirror" && !other.GetComponent<MirrorBool>().withRay)
+                if (lightTarget)
                 {
-                    lightTarget = other.gameObject;
-                    other.GetComponent<MirrorBool>().withRay = true;
-                    var heading = other.transform.position - transform.position;
-                    var distance = heading.magnitude;
-                    var direction = heading / distance;
-                    var reflVec = Vector3.Reflect(direction, other.transform.up);
-                    childRay = Instantiate(rayPrefab, other.transform.position, Quaternion.LookRotation(reflVec) * Quaternion.Euler(90, 0, 0));
-                    childRay.transform.localScale = new Vector3(1, 0.1f, 1);
+                    lightTarget.GetComponent<MirrorBool>().withRay = false;
                 }
+                if (childRay)
+                {
+                    RayDie(childRay);
+                } 
             }
         }
+        gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, hit.distance / 2, gameObject.transform.localScale.z);
+        gameObject.transform.rotation = Quaternion.LookRotation(ray.direction) * Quaternion.Euler(-90, 0, 0);
+
+
     }
-    private void OnTriggerStay(Collider other)
+    public void RayDie(GameObject cr)
     {
-        if (other.tag != "Light")
+        if (cr.GetComponent<MirrorLines>().childRay)
         {
-            if (other.gameObject == lightTarget)
-            {
-                var heading = other.transform.position - transform.position;
-                var distance = heading.magnitude;
-                var direction = heading / distance;
-                var reflVec = Vector3.Reflect(direction, other.transform.up);
-                childRay.transform.rotation = Quaternion.LookRotation(reflVec) * Quaternion.Euler(-90, 0, 0);
-            }
+            RayDie(cr.GetComponent<MirrorLines>().childRay);
         }
-            
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag != "Light")
+        if (cr.GetComponent<MirrorLines>().lightTarget)
         {
-            blocked = false;
-            if (other.gameObject == lightTarget)
-            {
-                other.GetComponent<MirrorBool>().withRay = false;
-                lightTarget = null;
-                Destroy(childRay);
-            }
-        } 
+            cr.GetComponent<MirrorLines>().lightTarget.GetComponent<MirrorBool>().withRay = false;
+        }
+        Destroy(cr);
     }
 }
