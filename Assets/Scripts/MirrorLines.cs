@@ -60,6 +60,10 @@ public class MirrorLines : MonoBehaviour
                     RayDie(childRay);
                 } 
             }
+            if (hit.collider.gameObject.name == "crystal_17_2")
+            {
+                hit.collider.gameObject.GetComponent<CrystalDestroy>().AddLight();
+            }
         }
         gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, hit.distance / 2, gameObject.transform.localScale.z);
         gameObject.transform.rotation = Quaternion.LookRotation(ray.direction) * Quaternion.Euler(-90, 0, 0);
