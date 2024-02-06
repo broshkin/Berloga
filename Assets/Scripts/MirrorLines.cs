@@ -37,7 +37,7 @@ public class MirrorLines : MonoBehaviour
                 hit.collider.gameObject.GetComponent<MirrorBool>().withRay = true;
                 childRay = Instantiate(rayPrefab, hit.point, Quaternion.LookRotation(Vector3.Reflect(ray.direction, lightTarget.transform.forward)) * Quaternion.Euler(-90, 0, 0));
                 childRay.GetComponent<MirrorLines>().parentRay = gameObject;
-                childRay.transform.localScale = new Vector3(1, 0.1f, 1);
+                childRay.transform.localScale = new Vector3(0.3f, 0.1f, 0.3f);
             }
             if (hit.collider.gameObject == lightTarget)
             {
