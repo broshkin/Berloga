@@ -7,10 +7,12 @@ public class MirrorLines : MonoBehaviour
     private GameObject childRay;
     public GameObject parentRay;
     public GameObject lightTarget;
+    public GameObject crystal;
     public Ray ray = new Ray();
 
     private void Start()
     {
+        crystal = GameObject.FindGameObjectWithTag("Crystal");
         blocked = false;
         lightTarget = null;
         childRay = null;
@@ -60,9 +62,13 @@ public class MirrorLines : MonoBehaviour
                     RayDie(childRay);
                 } 
             }
-            if (hit.collider.gameObject.name == "crystal_17_2")
+            if (hit.collider.gameObject.tag == "Crystal")
             {
-                hit.collider.gameObject.GetComponent<CrystalDestroy>().AddLight();
+                crystal.GetComponent<CrystalDestroy>().rayOnCrystal = true;
+            }
+            else if (crystal)
+            {
+                crystal.GetComponent<CrystalDestroy>().rayOnCrystal = false;
             }
         }
         gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, hit.distance / 2, gameObject.transform.localScale.z);

@@ -6,6 +6,9 @@ public class CrystalDestroy : MonoBehaviour
 {
     private Material crystalMat;
     private float crystalIntensive = 0f;
+    public GameObject explosionParticle;
+    public AudioSource explosionAudio;
+    public bool rayOnCrystal = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,10 @@ public class CrystalDestroy : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (rayOnCrystal)
+        {
+            AddLight();
+        }
         if (crystalIntensive > 0)
         {
             crystalIntensive -= 0.05f;
@@ -27,7 +34,10 @@ public class CrystalDestroy : MonoBehaviour
         crystalMat.SetColor("_EmissionColor", crystalMat.color * crystalIntensive);
         if (crystalIntensive >= 20)
         {
+            Instantiate(explosionParticle, transform.position + new Vector3(0, 2, 0), explosionParticle.transform.rotation);
+            explosionAudio.Play();
             Destroy(gameObject);
         }
+
     }
 }
