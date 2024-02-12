@@ -168,7 +168,7 @@ public class DialogSystem : MonoBehaviour
         {
             ShowMessage();
         }
-        else if (dialogNum >= 7 && dialogNum <= 12 && onceInFortress)
+        else if (dialogNum > 7 && dialogNum <= 12 && onceInFortress)
         {
             ShowMessage();
         }
