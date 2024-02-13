@@ -19,14 +19,14 @@ public class MirrorActions : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<RotateMirrorPlusX15>(out RotateMirrorPlusX15 rmp) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusXAction>(out RotateMirrorPlusXAction rmpx) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
             {
                 GetComponent<MirrorStates>().RotateToPlusX();
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<ForwardAction>(out ForwardAction fa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusXAction>(out RotateMirrorPlusXAction fa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
                 passwordCanvas.GetComponent<passwordCanvas>().interactObject = gameObject;
@@ -34,7 +34,7 @@ public class MirrorActions : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<ForwardAction>(out ForwardAction oa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusXAction>(out RotateMirrorPlusXAction oa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
             {
                 buttonCanvas.SetActive(true);
                 buttonCanvas.GetComponent<ButtonCanvas>().interactObject = gameObject;
@@ -43,14 +43,14 @@ public class MirrorActions : MonoBehaviour
 
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<BackAction>(out BackAction fa) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+            if (ActiveAction.TryGetComponent<RotateMirrorMinusXAction>(out RotateMirrorMinusXAction fa) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
             {
-                GetComponent<CarStates>().MoveBackward();
+                GetComponent<MirrorStates>().RotateToMinusX();
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<BackAction>(out BackAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            if (ActiveAction.TryGetComponent<RotateMirrorMinusXAction>(out RotateMirrorMinusXAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
                 passwordCanvas.GetComponent<passwordCanvas>().interactObject = gameObject;
@@ -58,7 +58,7 @@ public class MirrorActions : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<BackAction>(out BackAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
+            if (ActiveAction.TryGetComponent<RotateMirrorMinusXAction>(out RotateMirrorMinusXAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
             {
                 buttonCanvas.SetActive(true);
                 buttonCanvas.GetComponent<ButtonCanvas>().interactObject = gameObject;
@@ -67,14 +67,14 @@ public class MirrorActions : MonoBehaviour
 
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction fa) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusYAction>(out RotateMirrorPlusYAction fa) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
             {
-                soundSignal.Play();
+                GetComponent<MirrorStates>().RotateToPlusY();
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusYAction>(out RotateMirrorPlusYAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
                 passwordCanvas.GetComponent<passwordCanvas>().interactObject = gameObject;
@@ -82,7 +82,7 @@ public class MirrorActions : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusYAction>(out RotateMirrorPlusYAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
             {
                 buttonCanvas.SetActive(true);
                 buttonCanvas.GetComponent<ButtonCanvas>().interactObject = gameObject;
@@ -91,14 +91,14 @@ public class MirrorActions : MonoBehaviour
 
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction fa) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
+            if (ActiveAction.TryGetComponent<RotateMirrorMinusYAction>(out RotateMirrorMinusYAction fa) && ActiveTrigger.TryGetComponent<AliveTrigger>(out AliveTrigger at))
             {
-                soundSignal.Play();
+                GetComponent<MirrorStates>().RotateToMinusY();
             }
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
+            if (ActiveAction.TryGetComponent<RotateMirrorMinusYAction>(out RotateMirrorMinusYAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt))
             {
                 passwordCanvas.SetActive(true);
                 passwordCanvas.GetComponent<passwordCanvas>().interactObject = gameObject;
@@ -106,7 +106,7 @@ public class MirrorActions : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
+            if (ActiveAction.TryGetComponent<RotateMirrorMinusYAction>(out RotateMirrorMinusYAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt))
             {
                 buttonCanvas.SetActive(true);
                 buttonCanvas.GetComponent<ButtonCanvas>().interactObject = gameObject;
@@ -134,21 +134,21 @@ public class MirrorActions : MonoBehaviour
     {
         if (realPassword == password && ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<ForwardAction>(out ForwardAction oa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt1))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusXAction>(out RotateMirrorPlusXAction oa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt1))
             {
-                GetComponent<CarStates>().MoveForward();
+                GetComponent<MirrorStates>().RotateToPlusX();
             }
-            else if (ActiveAction.TryGetComponent<BackAction>(out BackAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt2))
+            else if (ActiveAction.TryGetComponent<RotateMirrorMinusXAction>(out RotateMirrorMinusXAction ca) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt2))
             {
-                GetComponent<CarStates>().MoveBackward();
+                GetComponent<MirrorStates>().RotateToMinusX();
             }
-            else if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction sa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt3))
+            else if (ActiveAction.TryGetComponent<RotateMirrorPlusYAction>(out RotateMirrorPlusYAction sa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt3))
             {
-                soundSignal.Play();
+                GetComponent<MirrorStates>().RotateToPlusY();
             }
-            else if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction sa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt3))
+            else if (ActiveAction.TryGetComponent<RotateMirrorMinusYAction>(out RotateMirrorMinusYAction aa) && ActiveTrigger.TryGetComponent<PasswordTrigger>(out PasswordTrigger pt4))
             {
-                soundSignal.Play();
+                GetComponent<MirrorStates>().RotateToMinusY();
             }
         }
     }
@@ -156,21 +156,21 @@ public class MirrorActions : MonoBehaviour
     {
         if (ActiveAction && ActiveTrigger)
         {
-            if (ActiveAction.TryGetComponent<ForwardAction>(out ForwardAction oa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt1))
+            if (ActiveAction.TryGetComponent<RotateMirrorPlusXAction>(out RotateMirrorPlusXAction oa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt1))
             {
-                GetComponent<CarStates>().MoveForward();
+                GetComponent<MirrorStates>().RotateToPlusX();
             }
-            else if (ActiveAction.TryGetComponent<BackAction>(out BackAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt2))
+            else if (ActiveAction.TryGetComponent<RotateMirrorMinusXAction>(out RotateMirrorMinusXAction ca) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt2))
             {
-                GetComponent<CarStates>().MoveBackward();
+                GetComponent<MirrorStates>().RotateToMinusX();
             }
-            else if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction sa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt3))
+            else if (ActiveAction.TryGetComponent<RotateMirrorPlusYAction>(out RotateMirrorPlusYAction sa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt3))
             {
-                soundSignal.Play();
+                GetComponent<MirrorStates>().RotateToPlusY();
             }
-            else if (ActiveAction.TryGetComponent<SoundAction>(out SoundAction sa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt3))
+            else if (ActiveAction.TryGetComponent<RotateMirrorMinusYAction>(out RotateMirrorMinusYAction aa) && ActiveTrigger.TryGetComponent<ButtonTrigger>(out ButtonTrigger bt4))
             {
-                soundSignal.Play();
+                GetComponent<MirrorStates>().RotateToMinusY();
             }
         }
     }
