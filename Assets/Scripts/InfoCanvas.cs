@@ -15,6 +15,7 @@ public class InfoCanvas : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log(other.gameObject.name);
             infoCanvas.SetActive(true);
             isActive = true;
         }

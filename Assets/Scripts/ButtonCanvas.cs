@@ -49,7 +49,19 @@ public class ButtonCanvas : MonoBehaviour
                     pa.ButtonAction();
                 }
             }
-            gameObject.SetActive(false);
+            if (interactObject.tag == "Mirror")
+            {
+                foreach (var da in interactObject.GetComponents<MirrorActions>())
+                {
+                    da.ButtonAction();
+                }
+            }
+
+
+            if (interactObject.tag != "Mirror")
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 }

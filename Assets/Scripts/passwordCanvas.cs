@@ -57,7 +57,13 @@ public class passwordCanvas : MonoBehaviour
         {
             foreach (var da in interactObject.GetComponents<RoverActions>())
             {
-                Debug.Log(2);
+                da.PasswordAction(getpw);
+            }
+        }
+        if (interactObject.tag == "Mirror")
+        {
+            foreach (var da in interactObject.GetComponents<MirrorActions>())
+            {
                 da.PasswordAction(getpw);
             }
         }

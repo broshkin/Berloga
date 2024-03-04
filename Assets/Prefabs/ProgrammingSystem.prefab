@@ -1035,6 +1035,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1111,6 +1112,7 @@ MonoBehaviour:
   passwordParameter: {fileID: 1114115394178986776, guid: b6de3fb8e1667bd499aa116ff7b0fd95, type: 3}
   buttonParameter: {fileID: 1114115394178986776, guid: 80c4f455993995d4ba4920b01fc7d6ca, type: 3}
   magniteParameter: {fileID: 0}
+  numText: {fileID: 0}
 --- !u!1 &123387268842202914
 GameObject:
   m_ObjectHideFlags: 0

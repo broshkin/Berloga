@@ -6,9 +6,10 @@ public class CrystalDestroy : MonoBehaviour
 {
     private Material crystalMat;
     private float crystalIntensive = 0f;
-    public GameObject explosionParticle;
+    public ParticleSystem explosionParticle;
     public AudioSource explosionAudio;
     public bool rayOnCrystal = false;
+    public Animator[] doorAnimators;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +35,12 @@ public class CrystalDestroy : MonoBehaviour
         crystalMat.SetColor("_EmissionColor", crystalMat.color * crystalIntensive);
         if (crystalIntensive >= 20)
         {
-            Instantiate(explosionParticle, transform.position + new Vector3(0, 2, 0), explosionParticle.transform.rotation);
             explosionAudio.Play();
+            explosionParticle.Play();
+            foreach (var a in doorAnimators)
+            {
+                a.SetTrigger("OpenDoors");
+            }
             Destroy(gameObject);
         }
 

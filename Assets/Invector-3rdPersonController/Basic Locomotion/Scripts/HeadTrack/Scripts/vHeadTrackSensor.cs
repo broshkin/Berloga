@@ -20,6 +20,7 @@ namespace Invector.vCharacterController
 
         void Start()
         {
+            Destroy(gameObject);
             var _rigidB = GetComponent<Rigidbody>();
             sphere = GetComponent<SphereCollider>();
             sphere.isTrigger = true;
@@ -27,6 +28,8 @@ namespace Invector.vCharacterController
             _rigidB.isKinematic = true;
             _rigidB.constraints = RigidbodyConstraints.FreezeAll;
             if (headTrack) sphere.radius = headTrack.distanceToDetect;
+            gameObject.layer = 2;
+            
         }
 
         void OnTriggerEnter(Collider other)

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ApplyPrgSysChanges : MonoBehaviour
 {
-    public ProgrammingSystem[] programmingSystems = null;
+    public List<ProgrammingSystem> programmingSystems = null;
     public List<string> actionComponents = null;
     public GameObject interactObject;
 
@@ -33,20 +33,23 @@ public class ApplyPrgSysChanges : MonoBehaviour
             }
             
         }
-        foreach (var programmingSystem in programmingSystems)
+        if (interactObject.tag != "Ship")
         {
-            var a = programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.childCount;
-            for (int i = 0; i < a; i++)
+            foreach (var programmingSystem in programmingSystems)
             {
-                foreach (var aa in actionComponents)
+                var a = programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.childCount;
+                for (int i = 0; i < a; i++)
                 {
-                    if (programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent(aa))
+                    foreach (var aa in actionComponents)
                     {
-                        programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<Image>().color = Color.gray;
-                        programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<Button>().enabled = false;
+                        if (programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent(aa))
+                        {
+                            programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<Image>().color = Color.gray;
+                            programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<Button>().enabled = false;
+                        }
                     }
+
                 }
-                
             }
         }
         actionComponents.Clear();
@@ -145,8 +148,65 @@ public class ApplyPrgSysChanges : MonoBehaviour
                 {
                     dea.activateAction();
                 }
+                if (prg.ActiveAction.TryGetComponent<RotateMirrorPlusXAction>(out RotateMirrorPlusXAction rpxa))
+                {
+                    rpxa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<RotateMirrorMinusXAction>(out RotateMirrorMinusXAction rmxa))
+                {
+                    rmxa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<RotateMirrorPlusYAction>(out RotateMirrorPlusYAction rpya))
+                {
+                    rpya.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<RotateMirrorMinusYAction>(out RotateMirrorMinusYAction rmya))
+                {
+                    rmya.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<ForwardMoveShipAction>(out ForwardMoveShipAction fmsa))
+                {
+                    fmsa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<RightRotateShipAction>(out RightRotateShipAction rrsa))
+                {
+                    rrsa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<LeftRotateShipAction>(out LeftRotateShipAction lrsa))
+                {
+                    lrsa.activateAction();
+                }
+            }
+            if (interactObject)
+            {
+                if (prg.ActiveAction && interactObject.tag == "Ship")
+                {
+                    if (prg.ActiveAction.TryGetComponent<ForwardMoveShipAction>(out ForwardMoveShipAction fmsa))
+                    {
+                        fmsa.activateAction();
+                    }
+                    if (prg.ActiveAction.TryGetComponent<RightRotateShipAction>(out RightRotateShipAction rrsa))
+                    {
+                        rrsa.activateAction();
+                    }
+                    if (prg.ActiveAction.TryGetComponent<LeftRotateShipAction>(out LeftRotateShipAction lrsa))
+                    {
+                        lrsa.activateAction();
+                    }
+                }
+            }
+            
+        }
+        if (interactObject)
+        {
+            if (interactObject.tag == "Ship")
+            {
+                foreach (var a in interactObject.GetComponents<ShipActions>())
+                {
+                    a.PushAction();
+                }
+                interactObject.GetComponent<ShipStates>().ActivateMoving();
             }
         }
-        
     }
 }

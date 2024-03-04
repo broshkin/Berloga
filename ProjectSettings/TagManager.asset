@@ -48,6 +48,7 @@ TagManager:
   - Mirror
   - Light
   - Crystal
+  - Ship
   layers:
   - Default
   - TransparentFX

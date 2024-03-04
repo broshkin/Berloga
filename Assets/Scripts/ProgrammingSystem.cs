@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class ProgrammingSystem : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class ProgrammingSystem : MonoBehaviour
     public GameObject passwordParameter;
     public GameObject buttonParameter;
     public GameObject magniteParameter;
+
+    public TextMeshProUGUI numText;
 
     public void Start()
     {

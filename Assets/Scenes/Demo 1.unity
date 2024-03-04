@@ -1795,7 +1795,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 866d6af378425344bbce28825c5d6821, type: 2}
+  - {fileID: 2100000, guid: 0d31c61e0a3a1ec469d21ca787780c33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7733,7 +7733,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591633760}
   m_HandleRect: {fileID: 591633759}
   m_Direction: 2
-  m_Value: 0.9999996
+  m_Value: 0.9999994
   m_Size: 0.7
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -13781,6 +13781,7 @@ MonoBehaviour:
   passwordParameter: {fileID: 1114115394178986776, guid: b6de3fb8e1667bd499aa116ff7b0fd95, type: 3}
   buttonParameter: {fileID: 1114115394178986776, guid: 80c4f455993995d4ba4920b01fc7d6ca, type: 3}
   magniteParameter: {fileID: 0}
+  numText: {fileID: 0}
 --- !u!224 &780882913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16574,6 +16575,7 @@ MonoBehaviour:
   passwordParameter: {fileID: 1114115394178986776, guid: b6de3fb8e1667bd499aa116ff7b0fd95, type: 3}
   buttonParameter: {fileID: 1114115394178986776, guid: 80c4f455993995d4ba4920b01fc7d6ca, type: 3}
   magniteParameter: {fileID: 0}
+  numText: {fileID: 0}
 --- !u!224 &895462710
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17162,7 +17164,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f06020bb2ea80704ba6c16eaec642fca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c9f5edb50bf3df440bc66c1f4c5a2260, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -27245,7 +27247,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1033187823}
   m_HandleRect: {fileID: 1033187822}
   m_Direction: 2
-  m_Value: 0.9999996
+  m_Value: 0.9999994
   m_Size: 0.7
   m_NumberOfSteps: 0
   m_OnValueChanged:

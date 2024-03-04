@@ -83,6 +83,13 @@ public class Barrier : MonoBehaviour
                 transform.position = new Vector3(2, transform.position.y, transform.position.z);
             }
         }
+        if (SceneManager.GetActiveScene().buildIndex == 9)
+        {
+            if (transform.position.z > -23.5f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -23.5f);
+            }
+        }
 
     }
 }

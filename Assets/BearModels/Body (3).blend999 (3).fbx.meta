@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fabirc
-    second: {fileID: 2100000, guid: 219ab94d96e5c0c4792f95ce95ba3d17, type: 2}
+    second: {fileID: 2100000, guid: 9a864e59291eea54491e16ead73335b1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -38,7 +38,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.011
-    second: {fileID: 2100000, guid: 6b373bae59d362a4487f1903c193925b, type: 2}
+    second: {fileID: 2100000, guid: 02aadd8319c87a14eac8ab57872dd011, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -48,7 +48,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.014
-    second: {fileID: 2100000, guid: 866d6af378425344bbce28825c5d6821, type: 2}
+    second: {fileID: 2100000, guid: 0d31c61e0a3a1ec469d21ca787780c33, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

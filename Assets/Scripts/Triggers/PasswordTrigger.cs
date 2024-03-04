@@ -64,6 +64,30 @@ public class PasswordTrigger : Trigger
                 }
             }
         }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Mirror")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<MirrorActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
+            }
+        }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Ship")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<ShipActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
+            }
+        }
 
     }
     public override void OnClickedTrigger()

@@ -5,24 +5,21 @@ using UnityEngine;
 public class MirrorStates : MonoBehaviour
 {
     public float turnTime = 50f;
-    public void RotateToPlusX()
+
+    public void RotateToMinusY()
     {
-        Quaternion target = Quaternion.Euler(transform.eulerAngles.x + 15, transform.eulerAngles.y, transform.eulerAngles.z);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnTime * Time.deltaTime);
-    }
-    public void RotateToMinusX()
-    {
-        Quaternion target = Quaternion.Euler(transform.eulerAngles.x - 15, transform.eulerAngles.y, transform.eulerAngles.z);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnTime * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x - 5, transform.eulerAngles.y, transform.eulerAngles.z);
     }
     public void RotateToPlusY()
     {
-        Quaternion target = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 15, transform.eulerAngles.z);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnTime * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x + 5, transform.eulerAngles.y, transform.eulerAngles.z);
     }
-    public void RotateToMinusY()
+    public void RotateToPlusX()
     {
-        Quaternion target = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 15, transform.eulerAngles.z);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnTime * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + 5, transform.eulerAngles.z);
+    }
+    public void RotateToMinusX()
+    {
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y - 5, transform.eulerAngles.z);
     }
 }
