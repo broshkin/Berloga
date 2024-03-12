@@ -17,10 +17,12 @@ namespace Invector.vCharacterController
                 sphere.radius = headTrack.distanceToDetect;
             }
         }
-
-        void Start()
+        private void Awake()
         {
             Destroy(gameObject);
+        }
+        void Start()
+        {
             var _rigidB = GetComponent<Rigidbody>();
             sphere = GetComponent<SphereCollider>();
             sphere.isTrigger = true;

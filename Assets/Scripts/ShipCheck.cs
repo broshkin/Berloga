@@ -43,5 +43,10 @@ public class ShipCheck : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
             GetComponent<ShipStates>().isFinished = false;
         }
+        if (final && GetComponent<ShipStates>().isFinished)
+        {
+            artefactsManager.getFish = true;
+            Destroy(GameObject.Find("FishV2"));
+        }
     }
 }

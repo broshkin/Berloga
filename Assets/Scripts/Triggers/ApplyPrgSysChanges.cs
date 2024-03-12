@@ -25,6 +25,7 @@ public class ApplyPrgSysChanges : MonoBehaviour
     }
     public void ApplyActions()
     {
+        interactObject = programmingSystems[0].interactObject;
         foreach (var programmingSystem in  programmingSystems)
         {
             if (programmingSystem.ActiveAction != null)
@@ -44,6 +45,7 @@ public class ApplyPrgSysChanges : MonoBehaviour
                     {
                         if (programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent(aa))
                         {
+                            Debug.Log(aa);
                             programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<Image>().color = Color.gray;
                             programmingSystem.ActionsView.transform.GetChild(0).transform.GetChild(0).transform.GetChild(i).GetComponent<Button>().enabled = false;
                         }
@@ -175,6 +177,22 @@ public class ApplyPrgSysChanges : MonoBehaviour
                 if (prg.ActiveAction.TryGetComponent<LeftRotateShipAction>(out LeftRotateShipAction lrsa))
                 {
                     lrsa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<PolivAction>(out PolivAction pa))
+                {
+                    pa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<PosevAction>(out PosevAction psa))
+                {
+                    psa.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<UdobrenieAction>(out UdobrenieAction uya))
+                {
+                    uya.activateAction();
+                }
+                if (prg.ActiveAction.TryGetComponent<VspohatAction>(out VspohatAction vspa))
+                {
+                    vspa.activateAction();
                 }
             }
             if (interactObject)

@@ -49,6 +49,7 @@ TagManager:
   - Light
   - Crystal
   - Ship
+  - Poliv
   layers:
   - Default
   - TransparentFX

@@ -80,5 +80,16 @@ public class AliveTrigger : Trigger
                 }
             }
         }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Poliv")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<PolivActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    break;
+                }
+            }
+        }
     }
 }

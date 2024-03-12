@@ -36,7 +36,7 @@ public class PortalStates : MonoBehaviour
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("activateStatus") && Once)
         {
             Once = false;
-            DialogSystem.dialogNum = 2;
+            DialogSystem.dialogNum = 8;
             GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
         }
     }

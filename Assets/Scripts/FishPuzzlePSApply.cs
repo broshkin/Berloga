@@ -28,7 +28,7 @@ public class FishPuzzlePSApply : MonoBehaviour
         for (int i = 1; i < 36; i++)
         {
             var a = Instantiate(buttonPrefab, contentObject.transform);
-            a.transform.position = new Vector3(a.transform.position.x + 120 * (i - 1), a.transform.position.y, a.transform.position.z);
+            a.transform.position = new Vector3(a.transform.position.x +(i - 1) * Screen.width / 18, a.transform.position.y, a.transform.position.z);
             a.GetComponentInChildren<TextMeshProUGUI>().text = i.ToString();
             foreach (var b in shipCanvas.GetComponent<ApplyPrgSysChanges>().programmingSystems)
             {

@@ -67,6 +67,14 @@ public class passwordCanvas : MonoBehaviour
                 da.PasswordAction(getpw);
             }
         }
+        if (interactObject.tag == "Poliv")
+        {
+            foreach (var da in interactObject.GetComponents<PolivActions>())
+            {
+                da.PasswordAction(getpw);
+            }
+            interactObject.GetComponent<PolivStates>().CoroutineActivating();
+        }
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;

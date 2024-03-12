@@ -88,6 +88,18 @@ public class PasswordTrigger : Trigger
                 }
             }
         }
+        if (GetComponentInParent<ProgrammingSystem>().interactObject.tag == "Poliv")
+        {
+            foreach (var act in GetComponentInParent<ProgrammingSystem>().interactObject.GetComponents<PolivActions>())
+            {
+                if (act.id == GetComponentInParent<ProgrammingSystem>().id)
+                {
+                    act.ActiveTrigger = gameObject;
+                    act.ActiveParameter = parameter;
+                    break;
+                }
+            }
+        }
 
     }
     public override void OnClickedTrigger()

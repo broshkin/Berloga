@@ -37,24 +37,48 @@ public class DialogSystem : MonoBehaviour
     public void Start()
     {
         textBG.SetActive(false);
-        messages.Add("Григорий, здравствуйте! Меня зовут Полина, я новый ассистент станции МЁД-1103. Вас срочно вызывает начальство к аппарату связи!");
-        messages.Add("Гриш, привет! Тут одно дело появилось, у нас на планете BEAR-2023 сломался вездеход, его необходимо починить. Ты не переживай, с тобой будет наш первопроходец - Андрей. Он сходит за ним, а тебе всего лишь отремонтировать его на станции, только, пожалуйста, включи ему портал, а то он совсем не умеет им пользоваться. Спасибо!");
-        messages.Add("Привет! Я Андрей, первопроходец, я так полагаю, ты Гриша, ну что ж, сейчас я мигом схожу за вездеходом и принесу его, благо на этой планете есть атмосфера, даже скафандр не пригодится!");
+        messages.Add("Григорий, здравствуйте!");
+        messages.Add("Меня зовут Полина, я новый ассистент станции МЁД-1103.");
+        messages.Add("Вас срочно вызывает начальство к аппарату связи!");
+        messages.Add("Гриш, привет! Тут одно дело появилось...");
+        messages.Add("На планете BEAR-2023 сломался вездеход, его надо починить.");
+        messages.Add("Ты не переживай, с тобой будет наш первопроходец - Андрей.");
+        messages.Add("Он обеспечит безопасное пребывание.");
+        messages.Add("Спасибо!");
+        messages.Add("Привет! Я Андрей, первопроходец.");
+        messages.Add("Я так полагаю, ты Гриша.");
+        messages.Add("Сейчас я осмотрю планету и можно выдвигаться."); 
+        messages.Add("Благо на планете есть атмосфера, даже скафандр не пригодится!");
         messages.Add("*Хе-хе-хе-хе*");
-        messages.Add("*Подкрадывается сзаде и толкает в портал*");
-        messages.Add("Где я? Кто меня сюда толкнул? Куда делся Андрей? Что вообще случилось? Вездеход почти целый, кто его успел восстановить? Так, осталось найти колёса и срочно искать Андрея!");
-        messages.Add("А вот и колёса! Почему они так аккуратно укрыты? Ладно, сейчас надо действовать. Осталось закрепить их на передней оси вездехода.");
+        messages.Add("*Подкрадывается сзади и толкает в портал*");
+        messages.Add("Где я?");
+        messages.Add("Кто меня сюда толкнул?");
+        messages.Add("Куда делся Андрей?");
+        messages.Add("Что вообще случилось?");
+        messages.Add("Вездеход почти целый, кто его успел восстановить?");
+        messages.Add("Так, осталось найти колёса и срочно искать Андрея!");
+        messages.Add("А вот и колёса! Почему они так аккуратно укрыты?");
+        messages.Add("Ладно, сейчас надо действовать.");
+        messages.Add("Осталось закрепить их на передней оси вездехода.");
         messages.Add("Вот мы и снова увиделись...");
         messages.Add("Я думал, что ко мне уже никто не придёт...");
-        messages.Add("Я уже больше года ошиваюсь на этой планете и пытаюсь найти выход отсюда. В следующей комнате находится портал, через него можно вернуться на станцию.");
+        messages.Add("Я уже долго ошиваюсь на этой планете...");
+        messages.Add("Никак не могу найти выход отсюда...");
+        messages.Add("В соседней комнате есть портал.");
+        messages.Add("Через него можно вернуться на станцию.");
         messages.Add("Но для его работы необходимо добыть три артефакта.");
         messages.Add("Вот карта с их местоположениями. Всё это время я составлял её.");
-        messages.Add("Отправляйся в путь и найди их. Я верю в тебя");
+        messages.Add("Найди сначала Медоракт, потом Рыбку, а затем Веточку.");
+        messages.Add("Отправляйся в путь и найди их. Я верю в тебя.");
+        for (int i = 0; i < messages.Count; i++)
+        {
+            messages[i] = '"' + messages[i] + '"';
+        }
     }
 
     // Update is called once per frame
     public void Update()
-    {               
+    {
         if (isAssistent)
         {           
             assistent.SetActive(true);
@@ -114,31 +138,31 @@ public class DialogSystem : MonoBehaviour
         dialogIsActive = true;
         textBG.SetActive(true);
         Time.timeScale = 0;
-        if (dialogNum == 0)
+        if (dialogNum >= 0 && dialogNum <= 2)
         {
             isAssistent = true;
         }
-        if (dialogNum == 1)
+        if (dialogNum >= 3 && dialogNum <= 7)
         {
             isAdmin = true;
         }
-        if (dialogNum == 2)
+        if (dialogNum >= 8 && dialogNum <= 11)
         {
             isAndrey = true;
         }
-        if (dialogNum == 3 || dialogNum == 4)
+        if (dialogNum == 12 || dialogNum == 13)
         {
             isArtemiy = true;
         }
-        if (dialogNum == 5 || dialogNum == 6)
+        if (dialogNum >= 14 && dialogNum <= 22)
         {
             isMain = true;
         }
-        if (dialogNum >= 7 && dialogNum <= 12)
+        if (dialogNum >= 23 && dialogNum <= 32 && onceInFortress)
         {
             isSecondAndrey = true;
         }
-        if (dialogNum == 12)
+        if (dialogNum == 32)
         {
             onceInFortress = false;
         }
@@ -154,21 +178,37 @@ public class DialogSystem : MonoBehaviour
         isSecondAndrey = false;
         isMain = false;
         Time.timeScale = 1;
-        if (dialogNum == 2)
+        if (dialogNum == 8)
         {
             openableDoor.GetComponent<DoorStates>().OpenDoor();
             textBG.SetActive(false);
         }
-        else if (dialogNum == 5)
+        else if (dialogNum == 14)
         {
             SceneManager.LoadScene("Demo 1");
             textBG.SetActive(false);
         }
-        else if (dialogNum == 4 || dialogNum == 3)
+        else if (dialogNum > 0 && dialogNum <= 2)
         {
             ShowMessage();
         }
-        else if (dialogNum > 7 && dialogNum <= 12 && onceInFortress)
+        else if (dialogNum > 3 && dialogNum <= 7)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 8 && dialogNum <= 13)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 14 && dialogNum <= 18)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 20 && dialogNum <= 22)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 23 && dialogNum <= 32 && onceInFortress)
         {
             ShowMessage();
         }

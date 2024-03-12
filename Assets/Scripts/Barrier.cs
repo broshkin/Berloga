@@ -6,8 +6,8 @@ public class Barrier : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -28,21 +28,13 @@ public class Barrier : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "Demo 1")
         {
-            if (transform.position.z > 30)
+            if (transform.position.z > 45)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, 30);
+                transform.position = new Vector3(transform.position.x, transform.position.y, 45);
             }
-            if (transform.position.z < 12)
+            if (transform.position.z < 9)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, 12);
-            }
-            if (transform.position.x < -30)
-            {
-                transform.position = new Vector3(-30, transform.position.y, transform.position.z);
-            }
-            if (transform.position.x > 25)
-            {
-                transform.position = new Vector3(25, transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, transform.position.y, 9);
             }
         }
         if (SceneManager.GetActiveScene().name == "Demo 2")
@@ -83,11 +75,46 @@ public class Barrier : MonoBehaviour
                 transform.position = new Vector3(2, transform.position.y, transform.position.z);
             }
         }
+        if (SceneManager.GetActiveScene().name == "Demo 4")
+        {
+            if (transform.position.z < -16)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, -16);
+            }
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+
+            if (transform.position.x < 13.8719f)
+            {
+                transform.position = new Vector3(13.8719f, transform.position.y, transform.position.z);
+            }
+
+        }
         if (SceneManager.GetActiveScene().buildIndex == 9)
         {
             if (transform.position.z > -23.5f)
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, -23.5f);
+            }
+        }
+        if(SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 10)
+        {
+            if (transform.position.z > 105.5f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 105.5f);
+            }
+            if (transform.position.z < 99.42f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 99.42f);
+            }
+            if (transform.position.x < 268.01f)
+            {
+                transform.position = new Vector3(268.01f, transform.position.y, transform.position.z);
+            }
+            if (transform.position.x > 297.17f)
+            {
+                transform.position = new Vector3(297.17f, transform.position.y, transform.position.z);
             }
         }
 

@@ -56,6 +56,14 @@ public class ButtonCanvas : MonoBehaviour
                     da.ButtonAction();
                 }
             }
+            if (interactObject.tag == "Poliv")
+            {
+                foreach (var da in interactObject.GetComponents<PolivActions>())
+                {
+                    da.ButtonAction();
+                }
+                interactObject.GetComponent<PolivStates>().CoroutineActivating();
+            }
 
 
             if (interactObject.tag != "Mirror")

@@ -36,7 +36,6 @@ namespace Invector.vCharacterController
                 moveDirection = dir.normalized;
             }
         }
-
         /// <summary>
         /// Handle RootMotion movement and specific Actions
         /// </summary>       
