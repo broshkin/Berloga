@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUpObject : MonoBehaviour
 {
     public GameObject pickUpCanvas;
+    public GameObject diskCanvas;
     public AudioSource bear;
     private void OnTriggerEnter(Collider other)
     {
@@ -26,8 +27,15 @@ public class PickUpObject : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                GameObject.Find("123").GetComponent<InstallWheel>().wheelArePicked = true;
-                bear.GetComponent<BearAudioPlay>().StartPlayCoroutine();
+                if (gameObject.tag == "Wheel")
+                {
+                    GameObject.Find("123").GetComponent<InstallWheel>().wheelArePicked = true;
+                    bear.GetComponent<BearAudioPlay>().StartPlayCoroutine();
+                }
+                if (gameObject.tag == "Disk")
+                {
+                    diskCanvas.SetActive(true);
+                }
                 Destroy(pickUpCanvas);
                 Destroy(gameObject);
             }

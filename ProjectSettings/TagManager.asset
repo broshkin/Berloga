@@ -50,6 +50,7 @@ TagManager:
   - Crystal
   - Ship
   - Poliv
+  - Disk
   layers:
   - Default
   - TransparentFX
