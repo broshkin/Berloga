@@ -3,15 +3,33 @@ using UnityEngine.SceneManagement;
 
 public class Barrier : MonoBehaviour
 {
+    private GameObject menu;
     // Start is called before the first frame update
     void Start()
     {
+        menu = GameObject.Find("PAPA").transform.GetChild(0).gameObject;
+        menu.SetActive(false);
     }
     
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            menu.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && menu.activeSelf)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            menu.SetActive(false);
+        }
+
+
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
             if (transform.position.x < 150)
@@ -43,9 +61,9 @@ public class Barrier : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x, transform.position.y, 100);
             }
-            if (transform.position.z < 85)
+            if (transform.position.z < 54.66f)
             {
-                transform.position = new Vector3(transform.position.x, transform.position.y, 85);
+                transform.position = new Vector3(transform.position.x, transform.position.y, 54.66f);
             }
             if (transform.position.x < 267)
             {

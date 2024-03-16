@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -33,6 +34,10 @@ public class DialogSystem : MonoBehaviour
     public GameObject openableDoor;
 
     public GameObject textBG;
+
+    public AudioSource bear;
+
+    public bool once = true;
     // Start is called before the first frame update
     public void Start()
     {
@@ -60,6 +65,10 @@ public class DialogSystem : MonoBehaviour
         messages.Add("А вот и колёса! Почему они так аккуратно укрыты?");
         messages.Add("Ладно, сейчас надо действовать.");
         messages.Add("Осталось закрепить их на передней оси вездехода.");
+        messages.Add("Что это было?");
+        messages.Add("Я слышал рык одного из наших.");
+        messages.Add("Это Андрей?");
+        messages.Add("Тут явно была страшная перестрелка...");
         messages.Add("Вот мы и снова увиделись...");
         messages.Add("Я думал, что ко мне уже никто не придёт...");
         messages.Add("Я уже долго ошиваюсь на этой планете...");
@@ -72,13 +81,27 @@ public class DialogSystem : MonoBehaviour
         messages.Add("Отправляйся в путь и найди их. Я верю в тебя.");
         for (int i = 0; i < messages.Count; i++)
         {
-            messages[i] = '"' + messages[i] + '"';
+            if (messages[i][0] != '"')
+            {
+                messages[i] = '"' + messages[i] + '"';
+            }   
         }
     }
+
+
 
     // Update is called once per frame
     public void Update()
     {
+        if (SceneManager.GetActiveScene().name == "Demo 1")
+        {
+            if (bear.isPlaying && once)
+            {
+                once = false;
+                StartCoroutine(WaitForEndBearSound());
+            }
+        }
+
         if (isAssistent)
         {           
             assistent.SetActive(true);
@@ -154,15 +177,15 @@ public class DialogSystem : MonoBehaviour
         {
             isArtemiy = true;
         }
-        if (dialogNum >= 14 && dialogNum <= 22)
+        if (dialogNum >= 14 && dialogNum <= 26)
         {
             isMain = true;
         }
-        if (dialogNum >= 23 && dialogNum <= 32 && onceInFortress)
+        if (dialogNum >= 27 && dialogNum <= 36 && onceInFortress)
         {
             isSecondAndrey = true;
         }
-        if (dialogNum == 32)
+        if (dialogNum == 36)
         {
             onceInFortress = false;
         }
@@ -208,7 +231,15 @@ public class DialogSystem : MonoBehaviour
         {
             ShowMessage();
         }
-        else if (dialogNum > 23 && dialogNum <= 32 && onceInFortress)
+        else if (dialogNum > 23 && dialogNum <= 25)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 26 && dialogNum <= 26)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 27 && dialogNum <= 36 && onceInFortress)
         {
             ShowMessage();
         }
@@ -216,6 +247,13 @@ public class DialogSystem : MonoBehaviour
         {
             textBG.SetActive(false);
         }
+    }
+
+    IEnumerator WaitForEndBearSound()
+    {
+        yield return new WaitWhile(() => bear.isPlaying);
+        dialogNum = 23;
+        ShowMessage();
     }
 
 }
