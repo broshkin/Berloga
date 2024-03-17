@@ -7,7 +7,6 @@ public class BeeBee : MonoBehaviour
     public GameObject firstBee;
     public GameObject secondBee;
     public GameObject firstDialog;
-    public GameObject secondDialog;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +19,22 @@ public class BeeBee : MonoBehaviour
         if (artefactsManager.getBerry)
         {
             firstBee.SetActive(false);
-            firstDialog.SetActive(false);
+            
             secondBee.SetActive(true);
-            secondDialog.SetActive(true);
+            if (firstDialog)
+            {
+                firstDialog.SetActive(false);
+            }
         }
         else
         {
             firstBee.SetActive(true);
-            firstDialog.SetActive(true);
+            
             secondBee.SetActive(false);
-            secondDialog.SetActive(false);
+            if (firstDialog)
+            {
+                firstDialog.SetActive(true);
+            }
         }
     }
 }

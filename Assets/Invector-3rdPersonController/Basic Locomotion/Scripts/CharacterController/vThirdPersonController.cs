@@ -232,19 +232,19 @@ namespace Invector.vCharacterController
         /// </summary>
         public virtual void Crouch()
         {
-            if (isGrounded && !customAction)
-            {
-                AutoCrouch();
-                if (isCrouching && CanExitCrouch())
-                {
-                    isCrouching = false;
-                }
-                else
-                {
-                    isCrouching = true;
-                    isSprinting = false;
-                }
-            }
+            //if (isGrounded && !customAction)
+            //{
+            //    AutoCrouch();
+            //    if (isCrouching && CanExitCrouch())
+            //    {
+            //        isCrouching = false;
+            //    }
+            //    else
+            //    {
+            //        isCrouching = true;
+            //        isSprinting = false;
+            //    }
+            //}
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Invector.vCharacterController
         /// </summary>
         public virtual void Strafe()
         {
-            isStrafing = !isStrafing;
+            //isStrafing = !isStrafing;
         }
 
         /// <summary>
@@ -298,11 +298,11 @@ namespace Invector.vCharacterController
         /// </summary>
         public virtual void Roll()
         {
-            OnRoll.Invoke();
-            isRolling = true;
-            animator.CrossFadeInFixedTime("Roll", rollTransition, baseLayer);
-            ReduceStamina(rollStamina, false);
-            currentStaminaRecoveryDelay = 2f;
+            //OnRoll.Invoke();
+            //isRolling = true;
+            //animator.CrossFadeInFixedTime("Roll", rollTransition, baseLayer);
+            //ReduceStamina(rollStamina, false);
+            //currentStaminaRecoveryDelay = 2f;
         }
 
 
