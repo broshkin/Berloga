@@ -35,6 +35,8 @@ public class PickUpObject : MonoBehaviour
                 if (gameObject.tag == "Disk")
                 {
                     diskCanvas.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
                 }
                 Destroy(pickUpCanvas);
                 Destroy(gameObject);
