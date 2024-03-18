@@ -891,7 +891,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 697fc95c597e90e4fa065fd0cefce06f, type: 2}
   resolutionDropDown: {fileID: 1318942717}
+  qualityDropDown: {fileID: 1119604316}
   options: []
+  volumeSlider: {fileID: 402334891}
+  fullscreenToggle: {fileID: 1049660370}
 --- !u!114 &194489367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,7 +1630,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 46447620}
   m_HandleRect: {fileID: 1416070214}
   m_Direction: 0
-  m_MinValue: -80
+  m_MinValue: -50
   m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
@@ -2881,6 +2884,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: "\u041E\u0447\u0435\u043D\u044C \u043D\u0438\u0437\u043A\u043E\u0435"
+      m_Image: {fileID: 0}
     - m_Text: "\u041D\u0438\u0437\u043A\u043E\u0435"
       m_Image: {fileID: 0}
     - m_Text: "\u0421\u0440\u0435\u0434\u043D\u0435\u0435"

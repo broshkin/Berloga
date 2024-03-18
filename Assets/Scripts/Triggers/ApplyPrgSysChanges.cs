@@ -8,6 +8,7 @@ public class ApplyPrgSysChanges : MonoBehaviour
     public List<string> actionComponents = null;
     public GameObject interactObject;
 
+
     public void OnClicked()
     {
         interactObject = programmingSystems[0].interactObject;
@@ -22,6 +23,15 @@ public class ApplyPrgSysChanges : MonoBehaviour
             programmingSystem.gameObject.SetActive(false);
         }
         interactObject.GetComponent<BoxCollider>().enabled = true;
+        Barrier.progIsOn = false;
+    }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnClicked();
+            gameObject.SetActive(false);
+        }
     }
     public void ApplyActions()
     {

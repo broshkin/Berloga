@@ -1679,7 +1679,6 @@ MonoBehaviour:
   firstBee: {fileID: 1617328064}
   secondBee: {fileID: 95031431}
   firstDialog: {fileID: 643593306}
-  secondDialog: {fileID: 0}
 --- !u!4 &103441825
 Transform:
   m_ObjectHideFlags: 0

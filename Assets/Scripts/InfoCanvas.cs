@@ -39,6 +39,7 @@ public class InfoCanvas : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.P))
             {
                 programmingSystem.SetActive(true);
+                Barrier.progIsOn = true;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
             }

@@ -4,9 +4,12 @@ using UnityEngine.SceneManagement;
 public class Barrier : MonoBehaviour
 {
     private GameObject menu;
+    private Vector3 startPos;
+    public static bool progIsOn = false;
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
         menu = GameObject.Find("PAPA").transform.GetChild(0).gameObject;
         menu.SetActive(false);
     }
@@ -16,19 +19,25 @@ public class Barrier : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf && !progIsOn)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             menu.SetActive(true);
+            Time.timeScale = 0;
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && menu.activeSelf)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             menu.SetActive(false);
+            Time.timeScale = 1;
         }
 
+        if (transform.position.y < -20)
+        {
+            transform.position = startPos;
+        }
 
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
