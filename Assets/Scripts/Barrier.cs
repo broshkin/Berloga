@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class Barrier : MonoBehaviour
 {
     private GameObject menu;
+    private GameObject settings;
     private Vector3 startPos;
     public static bool progIsOn = false;
     // Start is called before the first frame update
@@ -11,6 +12,7 @@ public class Barrier : MonoBehaviour
     {
         startPos = transform.position;
         menu = GameObject.Find("PAPA").transform.GetChild(0).gameObject;
+        settings = GameObject.Find("PAPA").transform.GetChild(1).gameObject;
         menu.SetActive(false);
     }
     
@@ -19,18 +21,19 @@ public class Barrier : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf && !progIsOn)
+        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf && !progIsOn && !settings.activeSelf)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             menu.SetActive(true);
             Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && menu.activeSelf)
+        else if (Input.GetKeyDown(KeyCode.Escape) && (menu.activeSelf || settings.activeSelf))
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             menu.SetActive(false);
+            settings.SetActive(false);
             Time.timeScale = 1;
         }
 
