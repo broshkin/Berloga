@@ -147,10 +147,10 @@ Material:
     m_Ints: []
     m_Floats:
     - Vector1_33A94334: 0.77
-    - Vector1_51108891: 0
+    - Vector1_51108891: 9
     - Vector1_B4F5C8D5: 0
     - Vector1_C9FD7FCE: 13.07
-    - Vector1_D4D30E56: 0.5
+    - Vector1_D4D30E56: 0
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1

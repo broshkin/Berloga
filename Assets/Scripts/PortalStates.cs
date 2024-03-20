@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class PortalStates : MonoBehaviour
 {
     public bool isActive = false;
     public bool Once = true;
+    public PlayableDirector timeline;
+    public GameObject[] vcams;
 
     public void Activate()
     {
@@ -36,8 +39,15 @@ public class PortalStates : MonoBehaviour
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("activateStatus") && Once)
         {
             Once = false;
-            DialogSystem.dialogNum = 8;
-            GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
+            //DialogSystem.dialogNum = 8;
+            //GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
+            Camera.main.gameObject.SetActive(false);
+            foreach (var a in vcams)
+            {
+                a.SetActive(false);
+            }
+            timeline.Play();
+
         }
     }
 }
