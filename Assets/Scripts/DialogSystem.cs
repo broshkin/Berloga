@@ -16,6 +16,7 @@ public class DialogSystem : MonoBehaviour
     public static bool isAndrey = false;
     public static bool isSecondAndrey = false;
     public static bool isMain = false;
+    public static bool isMisha = false;
     public static bool onceInFortress = true;
 
     public GameObject assistent;
@@ -24,6 +25,7 @@ public class DialogSystem : MonoBehaviour
     public GameObject andrey;
     public GameObject secondAndrey;
     public GameObject main;
+    public GameObject misha;
 
     private static List<string> messages = new List<string>();
 
@@ -83,6 +85,20 @@ public class DialogSystem : MonoBehaviour
         messages.Add("Отправляйся в путь и найди их. Я верю в тебя.");
         messages.Add("Пап, тебе нужна помощь?");
         messages.Add("Попробуй сделать действия в последовательности: Вспахать, Удобрение, Посев, Полив");
+        messages.Add("Пап, ты молодец, мы почти справились!");
+        messages.Add("Пап, да ты крут!");
+        messages.Add("Давай, пап, ещё немного!");
+        messages.Add("Пап, ну сколько можно говорить!");
+        messages.Add("Чтобы передвигаться, не роняя меня, используй клавиши WASD.");
+        messages.Add("Отлично! Теперь подойди к двери и запрогай её.");
+        messages.Add("Запомни важную формулу!");
+        messages.Add("Важно установить триггер и действие, а затем выйти из системы используя крестик или клавишу ESCAPE.");
+        messages.Add("Да ты крут! Побежали вперёд! Используй для этого ЛЕВЫЙ SHIFT.");
+        messages.Add("Давай попрыгаем! Используй ПРОБЕЛ!");
+        messages.Add("Попробуй запрогать сразу НЕСКОЛЬКО действий.");
+        messages.Add("Для этого используй пронумерованные кнопки сверху.");
+        messages.Add("Отлично! Теперь ты точно со всем справишься! Ну а если что, я всегда помогу!");
+
         for (int i = 0; i < messages.Count; i++)
         {
             if (messages[i][0] != '"')
@@ -154,6 +170,14 @@ public class DialogSystem : MonoBehaviour
         {
             main.SetActive(false);
         }
+        if (isMisha)
+        {
+            misha.SetActive(true);
+        }
+        else
+        {
+            misha.SetActive(false);
+        }
         if (dialogIsActive && Input.GetMouseButtonDown(0) && dialogNum != 37)
         {
             dialogNum++;
@@ -191,7 +215,7 @@ public class DialogSystem : MonoBehaviour
         }
         if (dialogNum == 19)
         {
-            
+            isMisha = true;
         }
         if (dialogNum >= 27 && dialogNum <= 36 && onceInFortress)
         {
@@ -200,6 +224,10 @@ public class DialogSystem : MonoBehaviour
         if (dialogNum == 36)
         {
             onceInFortress = false;
+        }
+        if (dialogNum >= 37)
+        {
+            isMisha = true;
         }
         showableText.text = messages[dialogNum].ToString();
     }
@@ -212,6 +240,7 @@ public class DialogSystem : MonoBehaviour
         isAssistent = false;
         isSecondAndrey = false;
         isMain = false;
+        isMisha = false;
         Time.timeScale = 1;
         if (dialogNum == 8)
         {
@@ -252,6 +281,18 @@ public class DialogSystem : MonoBehaviour
             ShowMessage();
         }
         else if (dialogNum > 27 && dialogNum <= 36 && onceInFortress)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 42 && dialogNum <= 43)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 45 && dialogNum <= 46)
+        {
+            ShowMessage();
+        }
+        else if (dialogNum > 49 && dialogNum <= 50)
         {
             ShowMessage();
         }

@@ -26,6 +26,7 @@ public class Tasks : MonoBehaviour
         tasks.Add("Вырастить дерево");
         tasks.Add("Отправиться к вездеходу");
         tasks.Add("Установить артефакты");
+        tasks.Add("Вернитесь на станцию");
         tasks.Add("Эвакуируйтесь");
     }
     public void Update()

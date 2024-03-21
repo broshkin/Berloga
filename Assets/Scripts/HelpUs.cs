@@ -21,7 +21,7 @@ public class HelpUs : MonoBehaviour
     }
     IEnumerator Help()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(120);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         DialogSystem.dialogNum = 37;

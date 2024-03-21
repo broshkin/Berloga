@@ -10,7 +10,17 @@ public class BeeBee : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (DialogSystem.onceInFortress)
+        {
+            if (firstDialog)
+            {
+                firstDialog.SetActive(true);
+            }
+        }
+        else
+        {
+            Destroy(firstDialog);
+        }
     }
 
     // Update is called once per frame
@@ -39,10 +49,7 @@ public class BeeBee : MonoBehaviour
         }
         else
         {
-            if (firstDialog)
-            {
-                firstDialog.SetActive(false);
-            }
+            Destroy(firstDialog);
         }
     }
 }

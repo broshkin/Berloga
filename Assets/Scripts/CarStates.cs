@@ -5,6 +5,8 @@ public class CarStates : MonoBehaviour
     public bool inForward = false;
     public bool inBackward = false;
     public bool inDefault = true;
+    public bool once = true;
+    public bool twice = true;
 
     public void MoveForward()
     {
@@ -61,6 +63,21 @@ public class CarStates : MonoBehaviour
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("moveBackwardFromForward"))
         {
             GetComponent<Animator>().SetBool("moveBackward", false);
+        }
+        if (!inDefault && twice)
+        {
+            twice = false;
+            DialogSystem.dialogNum = 51;
+            GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player" && once)
+        {
+            once = false;
+            DialogSystem.dialogNum = 49;
+            GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
         }
     }
 }

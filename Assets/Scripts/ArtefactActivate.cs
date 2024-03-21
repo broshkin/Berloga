@@ -19,6 +19,8 @@ public class ArtefactActivate : MonoBehaviour
             portal.GetComponent<Animator>().enabled = true;
             portal.GetComponentInParent<AudioSource>().Play();
             portal.GetComponent<BoxCollider>().enabled = true;
+            Tasks.index = 14;
+            GameObject.Find("TaskCanvas").GetComponent<Tasks>().SetTask();
             Destroy(gameObject);
         }
     }

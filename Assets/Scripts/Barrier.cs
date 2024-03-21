@@ -21,7 +21,7 @@ public class Barrier : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf && !progIsOn && !settings.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && !menu.activeSelf && !progIsOn && !settings.activeSelf && !DialogSystem.dialogIsActive)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
