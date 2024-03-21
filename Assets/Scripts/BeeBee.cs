@@ -21,19 +21,27 @@ public class BeeBee : MonoBehaviour
             firstBee.SetActive(false);
             
             secondBee.SetActive(true);
-            if (firstDialog)
-            {
-                firstDialog.SetActive(false);
-            }
-        }
+
+        }     
         else
         {
             firstBee.SetActive(true);
             
             secondBee.SetActive(false);
+
+        }
+        if (DialogSystem.onceInFortress)
+        {
             if (firstDialog)
             {
                 firstDialog.SetActive(true);
+            }
+        }
+        else
+        {
+            if (firstDialog)
+            {
+                firstDialog.SetActive(false);
             }
         }
     }

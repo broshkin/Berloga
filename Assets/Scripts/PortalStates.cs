@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PortalStates : MonoBehaviour
 {
@@ -39,15 +41,23 @@ public class PortalStates : MonoBehaviour
         if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("activateStatus") && Once)
         {
             Once = false;
-            //DialogSystem.dialogNum = 8;
-            //GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
+            DialogSystem.dialogNum = 8;
+            GameObject.FindGameObjectWithTag("DialogObject").GetComponent<DialogSystem>().ShowMessage();
+            Destroy(GameObject.Find("InfoCanvas"));
             Camera.main.gameObject.SetActive(false);
             foreach (var a in vcams)
             {
                 a.SetActive(false);
             }
             timeline.Play();
-
+            StartCoroutine(Teleport());
         }
+    }
+    IEnumerator Teleport()
+    {
+        yield return new WaitWhile(() => timeline.state == PlayState.Playing);
+        LevelChanger.lastLevel = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(14);
+        
     }
 }

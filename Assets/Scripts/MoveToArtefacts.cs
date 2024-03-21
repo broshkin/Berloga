@@ -21,25 +21,21 @@ public class MoveToArtefacts : MonoBehaviour
     {
         if (EnterInFortress.lastScene == 4 && SceneManager.GetActiveScene().buildIndex == 3)
         {
-            text.GetComponent<TextMeshProUGUI>().text = "Отправиться за медорактом\nНажмите клавишу 'E'";
             gameObject.GetComponent<BoxCollider>().enabled = true;
             buildIndexToMove = 6;
         }
         if (artefactsManager.getMedorakt && SceneManager.GetActiveScene().buildIndex == 6)
         {
-            text.GetComponent<TextMeshProUGUI>().text = "Отправиться за серебряной рыбкой\nНажмите клавишу 'E'";
             gameObject.GetComponent<BoxCollider>().enabled = true;
             buildIndexToMove = 8;
         }
         if (artefactsManager.getFish && SceneManager.GetActiveScene().buildIndex == 8)
         {
-            text.GetComponent<TextMeshProUGUI>().text = "Отправиться за веточкой ягод\nНажмите клавишу 'E'";
             gameObject.GetComponent<BoxCollider>().enabled = true;
             buildIndexToMove = 10;
         }
         if (artefactsManager.getBerry && SceneManager.GetActiveScene().buildIndex == 10)
         {
-            text.GetComponent<TextMeshProUGUI>().text = "Отправиться на базу\nНажмите клавишу 'E'";
             gameObject.GetComponent<BoxCollider>().enabled = true;
             buildIndexToMove = 3;
         }

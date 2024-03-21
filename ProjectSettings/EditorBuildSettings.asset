@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: 8c6cbed2c5a17b0428f9d4cce6069a1b
+  - enabled: 1
+    path: Assets/Scenes/PortalMoving.unity
+    guid: 26adab9e4aae06d429ed975012ed187d
   m_configObjects: {}

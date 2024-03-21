@@ -39,6 +39,8 @@ public class RoverStates : MonoBehaviour
         {
             Once = false;
             gameObject.GetComponent<BoxCollider>().enabled = true;
+            Tasks.index = 2;
+            GameObject.Find("TaskCanvas").GetComponent<Tasks>().SetTask();
         }
         if (finishCanvas.activeSelf)
         {

@@ -14,7 +14,7 @@ public class HelperMovement : MonoBehaviour
         lookPos.y = -1;
         var rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
-        transform.position = Vector3.SmoothDamp(transform.position, target.position + new Vector3(-0.62f, 1.812f, -1.153f), ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, target.position + new Vector3(-1f, 2f, -2f), ref velocity, smoothTime);
     }
 
 }

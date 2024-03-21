@@ -38,6 +38,8 @@ public class DialogSystem : MonoBehaviour
     public AudioSource bear;
 
     public bool once = true;
+
+    public GameObject tasks;
     // Start is called before the first frame update
     public void Start()
     {
@@ -56,12 +58,12 @@ public class DialogSystem : MonoBehaviour
         messages.Add("Благо на планете есть атмосфера, даже скафандр не пригодится!");
         messages.Add("*Хе-хе-хе-хе*");
         messages.Add("*Подкрадывается сзади и толкает в портал*");
-        messages.Add("Где я?");
-        messages.Add("Кто меня сюда толкнул?");
+        messages.Add("Где мы?");
+        messages.Add("Кто нас сюда толкнул?");
         messages.Add("Куда делся Андрей?");
         messages.Add("Что вообще случилось?");
         messages.Add("Вездеход почти целый, кто его успел восстановить?");
-        messages.Add("Так, осталось найти колёса и срочно искать Андрея!");
+        messages.Add("Пап, нам нужно срочно найти колёса и отправиться искать Андрея!");
         messages.Add("А вот и колёса! Почему они так аккуратно укрыты?");
         messages.Add("Ладно, сейчас надо действовать.");
         messages.Add("Осталось закрепить их на передней оси вездехода.");
@@ -79,6 +81,8 @@ public class DialogSystem : MonoBehaviour
         messages.Add("Вот карта с их местоположениями. Всё это время я составлял её.");
         messages.Add("Найди сначала Медоракт, потом Рыбку, а затем Веточку.");
         messages.Add("Отправляйся в путь и найди их. Я верю в тебя.");
+        messages.Add("Пап, тебе нужна помощь?");
+        messages.Add("Попробуй сделать действия в последовательности: Вспахать, Удобрение, Посев, Полив");
         for (int i = 0; i < messages.Count; i++)
         {
             if (messages[i][0] != '"')
@@ -150,7 +154,7 @@ public class DialogSystem : MonoBehaviour
         {
             main.SetActive(false);
         }
-        if (dialogIsActive && Input.GetMouseButtonDown(0))
+        if (dialogIsActive && Input.GetMouseButtonDown(0) && dialogNum != 37)
         {
             dialogNum++;
             AfterClickDialog();
@@ -177,9 +181,17 @@ public class DialogSystem : MonoBehaviour
         {
             isArtemiy = true;
         }
-        if (dialogNum >= 14 && dialogNum <= 26)
+        if (dialogNum >= 14 && dialogNum <= 18)
         {
             isMain = true;
+        }
+        if (dialogNum >= 20 && dialogNum <= 26)
+        {
+            isMain = true;
+        }
+        if (dialogNum == 19)
+        {
+            
         }
         if (dialogNum >= 27 && dialogNum <= 36 && onceInFortress)
         {
@@ -219,11 +231,11 @@ public class DialogSystem : MonoBehaviour
         {
             ShowMessage();
         }
-        else if (dialogNum > 8 && dialogNum <= 13)
+        else if (dialogNum > 8 && dialogNum <= 11)
         {
             ShowMessage();
         }
-        else if (dialogNum > 14 && dialogNum <= 18)
+        else if (dialogNum > 14 && dialogNum <= 19)
         {
             ShowMessage();
         }
@@ -246,6 +258,17 @@ public class DialogSystem : MonoBehaviour
         else
         {
             textBG.SetActive(false);
+        }
+        if (dialogNum == 20)
+        {
+            tasks.transform.GetChild(0).gameObject.SetActive(true);
+            Tasks.index = 0;
+            tasks.GetComponent<Tasks>().SetTask();
+        }
+        if (dialogNum == 37)
+        {
+            Tasks.index = 3;
+            GameObject.Find("TaskCanvas").GetComponent<Tasks>().SetTask();
         }
     }
 

@@ -30,6 +30,8 @@ public class PickUpObject : MonoBehaviour
                 if (gameObject.tag == "Wheel")
                 {
                     GameObject.Find("123").GetComponent<InstallWheel>().wheelArePicked = true;
+                    Tasks.index = 1;
+                    GameObject.Find("TaskCanvas").GetComponent<Tasks>().SetTask();
                     bear.GetComponent<BearAudioPlay>().StartPlayCoroutine();
                 }
                 if (gameObject.tag == "Disk")

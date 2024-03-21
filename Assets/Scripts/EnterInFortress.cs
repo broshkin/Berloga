@@ -18,52 +18,42 @@ public class EnterInFortress : MonoBehaviour
             inZone = true;
             if (gameObject.tag == "FortressEnter")
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Войти в подземелье\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (gameObject.tag == "FortressExit")
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Выйти из подземелья\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (gameObject.tag == "AltarEnter")
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Войти в алтарь\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (gameObject.tag == "AltarExit")
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Выйти из алтаря\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (SceneManager.GetActiveScene().buildIndex == 6 && !artefactsManager.getMedorakt)
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Войти в подземелье\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (SceneManager.GetActiveScene().buildIndex == 7)
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Выйти из подземелья\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (SceneManager.GetActiveScene().buildIndex == 8 && !artefactsManager.getFish)
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Войти в подземелье\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (SceneManager.GetActiveScene().buildIndex == 9)
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Выйти из подземелья\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (SceneManager.GetActiveScene().buildIndex == 10 && !artefactsManager.getBerry)
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Войти в подземелье\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
             if (SceneManager.GetActiveScene().buildIndex == 11)
             {
-                canvas.GetComponentInChildren<TextMeshProUGUI>().text = "Выйти из подземелья\nНажмите клавишу 'E'";
                 canvas.SetActive(true);
             }
         }
